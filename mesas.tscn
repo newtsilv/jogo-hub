@@ -1,0 +1,23 @@
+[gd_scene format=3 uid="uid://cnt4d68y5h21j"]
+
+[ext_resource type="Texture2D" uid="uid://cxmgcpgo6vxla" path="res://assets/sprites/mesa esquerda.png" id="1_7utui"]
+[ext_resource type="Script" uid="uid://c54k7ejefbpbf" path="res://sortable_object..gd" id="1_qjsfn"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_qjsfn"]
+size = Vector2(1321.5735, 653.50195)
+
+[node name="Area2D" type="Area2D" unique_id=1148582416]
+script = ExtResource("1_qjsfn")
+
+[node name="SortPoint" type="Marker2D" parent="." unique_id=85420998]
+position = Vector2(0, 174)
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=734499432]
+position = Vector2(5, 2.000061)
+scale = Vector2(0.48048782, 0.4804878)
+texture = ExtResource("1_7utui")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=235247123]
+position = Vector2(5.499963, 18.000006)
+scale = Vector2(0.48048782, 0.48048818)
+shape = SubResource("RectangleShape2D_qjsfn")

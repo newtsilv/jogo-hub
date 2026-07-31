@@ -1,0 +1,29 @@
+[gd_scene format=3 uid="uid://c3yhmorq3ir61"]
+
+[ext_resource type="Script" uid="uid://c54k7ejefbpbf" path="res://sortable_object..gd" id="1_0f5q7"]
+[ext_resource type="Texture2D" uid="uid://cxmgcpgo6vxla" path="res://assets/sprites/mesa esquerda.png" id="1_0rx7m"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_vhohb"]
+size = Vector2(1321.5735, 653.50195)
+
+[node name="Node2D" type="Node2D" unique_id=2130827776]
+
+[node name="Area2D" type="Area2D" parent="." unique_id=1588213173]
+
+[node name="SortPoint" type="Marker2D" parent="Area2D" unique_id=1130601585]
+position = Vector2(0, 174)
+script = ExtResource("1_0f5q7")
+
+[node name="Sprite2D" type="Sprite2D" parent="Area2D" unique_id=3280901]
+position = Vector2(5, 2.000061)
+scale = Vector2(0.48048782, 0.4804878)
+texture = ExtResource("1_0rx7m")
+script = ExtResource("1_0f5q7")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Area2D" unique_id=410283567]
+script = ExtResource("1_0f5q7")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D/StaticBody2D" unique_id=351245629]
+position = Vector2(5.499963, 18.000006)
+scale = Vector2(0.48048782, 0.48048818)
+shape = SubResource("RectangleShape2D_vhohb")

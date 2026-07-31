@@ -1,0 +1,42 @@
+[gd_scene format=3 uid="uid://cd4dkennonej7"]
+
+[ext_resource type="Script" uid="uid://dtbbt8okgp3dc" path="res://scenes/npc.gd" id="1_6xvi5"]
+[ext_resource type="Texture2D" uid="uid://dih88nuuitxtf" path="res://assets/sprites/manel.png" id="2_ktgr7"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_t62y5"]
+size = Vector2(85, 342)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_mhefn"]
+size = Vector2(88, 212)
+
+[node name="Npc" type="Area2D" unique_id=1905267183]
+script = ExtResource("1_6xvi5")
+
+[node name="Visual" type="Sprite2D" parent="." unique_id=1152918773]
+position = Vector2(2.861023e-06, 3.8146973e-06)
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("2_ktgr7")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1391666103]
+shape = SubResource("RectangleShape2D_t62y5")
+
+[node name="InteractionPoint" type="Marker2D" parent="." unique_id=1509839915]
+position = Vector2(0, 100)
+
+[node name="NameLabel" type="Label" parent="." unique_id=1859748956]
+offset_left = -36.0
+offset_top = -128.0
+offset_right = 41.0
+offset_bottom = -105.0
+text = "EMANUEL"
+
+[node name="ObjectiveArrow" type="Sprite2D" parent="." unique_id=751150190]
+
+[node name="SolidBody" type="StaticBody2D" parent="." unique_id=146581134]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="SolidBody" unique_id=1905585936]
+position = Vector2(0, 61)
+shape = SubResource("RectangleShape2D_mhefn")
+
+[node name="SortPoint" type="Marker2D" parent="." unique_id=306262772]
+position = Vector2(1, 156)
