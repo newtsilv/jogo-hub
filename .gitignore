@@ -1,0 +1,21 @@
+# Godot runtime/user data
+logs/
+shader_cache/
+
+# Godot generated/imported artifacts
+.godot/
+.import/
+*.import
+
+# Export/build outputs
+export/
+exports/
+build/
+builds/
+
+# OS/editor files
+.DS_Store
+Thumbs.db
+*.swp
+*.tmp
+*.bak
