@@ -1,3 +1,20 @@
 # Godot 4+ specific ignores
 .godot/
 /android/
+
+# Runtime/user data
+logs/
+shader_cache/
+
+# Export/build outputs
+export/
+exports/
+build/
+builds/
+
+# OS/editor files
+.DS_Store
+Thumbs.db
+*.swp
+*.tmp
+*.bak
