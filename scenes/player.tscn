@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://bgtjgeujinjtw"]
 
-[ext_resource type="Script" uid="uid://dgwn0j577b7ix" path="res://scenes/player.gd" id="1_3vyb7"]
+[ext_resource type="Script" uid="uid://dgwn0j577b7ix" path="res://scripts/player.gd" id="1_3vyb7"]
 [ext_resource type="Texture2D" uid="uid://cbcfqcnlvb4oy" path="res://assets/sprites/gabriel.png" id="2_g2els"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_vhohb"]

@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://cd4dkennonej7"]
 
-[ext_resource type="Script" uid="uid://dtbbt8okgp3dc" path="res://scenes/npc.gd" id="1_6xvi5"]
+[ext_resource type="Script" uid="uid://dtbbt8okgp3dc" path="res://scripts/npc.gd" id="1_6xvi5"]
 [ext_resource type="Texture2D" uid="uid://dih88nuuitxtf" path="res://assets/sprites/manel.png" id="2_ktgr7"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_t62y5"]

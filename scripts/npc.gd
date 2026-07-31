@@ -5,6 +5,9 @@ extends Area2D
 signal selected(npc: NPC)
 
 
+const SORT_Z_OFFSET := 2048
+
+
 @export_category("Personagem")
 @export var character_name: String = "Personagem"
 @export var world_sprite: Texture2D
@@ -40,6 +43,7 @@ signal selected(npc: NPC)
 @onready var interaction_point: Marker2D = $InteractionPoint
 @onready var name_label: Label = $NameLabel
 @onready var objective_arrow: Sprite2D = $ObjectiveArrow
+@onready var sort_point: Marker2D = $SortPoint
 
 
 var arrow_time: float = 0.0
@@ -64,15 +68,23 @@ func _ready() -> void:
 	# Faz cada NPC começar a animação em um momento diferente.
 	idle_time = randf() * TAU
 
-	# O Y Sort será responsável pela profundidade.
-	z_index = 0
+	update_z_index()
 
 	objective_arrow.hide()
 
 
 func _process(delta: float) -> void:
+	update_z_index()
 	animate_idle(delta)
 	animate_objective_arrow(delta)
+
+
+func update_z_index() -> void:
+	z_index = clampi(
+		SORT_Z_OFFSET + roundi(sort_point.global_position.y),
+		-4096,
+		4096
+	)
 
 
 func animate_idle(delta: float) -> void:

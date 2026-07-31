@@ -6,6 +6,9 @@ signal destination_reached
 signal movement_blocked
 
 
+const SORT_Z_OFFSET := 2048
+
+
 @export_category("Movement")
 @export var movement_speed: float = 350.0
 @export var stopping_distance: float = 10.0
@@ -39,6 +42,7 @@ var stuck_time: float = 0.0
 
 
 @onready var visual: Node2D = $Visual
+@onready var sort_point: Marker2D = $SortPoint
 
 
 func _ready() -> void:
@@ -46,9 +50,12 @@ func _ready() -> void:
 	last_position = global_position
 
 	reset_visual_immediately()
+	update_z_index()
 
 
 func _physics_process(delta: float) -> void:
+	update_z_index()
+
 	if not is_moving:
 		velocity = Vector2.ZERO
 		animate_idle(delta)
@@ -202,4 +209,12 @@ func reset_visual_immediately() -> void:
 	visual.scale = Vector2(
 		-facing_direction,
 		1.0
+	)
+
+
+func update_z_index() -> void:
+	z_index = clampi(
+		SORT_Z_OFFSET + roundi(sort_point.global_position.y),
+		-4096,
+		4096
 	)
