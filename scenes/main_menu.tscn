@@ -1,0 +1,108 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" path="res://scripts/main_menu.gd" id="1_menu"]
+[ext_resource type="Texture2D" uid="uid://4ln5f8bjuuo4" path="res://assets/sprites/luz.png" id="2_luz"]
+[ext_resource type="Texture2D" uid="uid://i2iyy16qecc1" path="res://assets/sprites/botaoverde.png" id="3_play"]
+[ext_resource type="Texture2D" uid="uid://cxfrfrq1txidv" path="res://assets/sprites/botao.png" id="4_quit"]
+
+[node name="MainMenu" type="Control" unique_id=180278845]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_menu")
+
+[node name="Background" type="ColorRect" parent="." unique_id=204786639]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.10980392, 0.03137255, 0.28627452, 1)
+
+[node name="Glow" type="TextureRect" parent="." unique_id=213868798]
+layout_mode = 0
+offset_left = 140.0
+offset_top = 260.0
+offset_right = 940.0
+offset_bottom = 1060.0
+modulate = Color(1, 1, 1, 0.35)
+mouse_filter = 2
+texture = ExtResource("2_luz")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="TitleLabel" type="Label" parent="." unique_id=1454630906]
+layout_mode = 0
+offset_left = 40.0
+offset_top = 540.0
+offset_right = 1040.0
+offset_bottom = 700.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 100
+text = "JOGO HUB"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="SubtitleLabel" type="Label" parent="." unique_id=808844981]
+layout_mode = 0
+offset_left = 40.0
+offset_top = 700.0
+offset_right = 1040.0
+offset_bottom = 760.0
+theme_override_colors/font_color = Color(0.8, 0.78, 0.9, 1)
+theme_override_font_sizes/font_size = 36
+text = "Conheça a Incode nessa aventura"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="PlayButton" type="TextureButton" parent="." unique_id=1301809819]
+layout_mode = 0
+offset_left = 190.0
+offset_top = 1280.0
+offset_right = 890.0
+offset_bottom = 1455.0
+texture_normal = ExtResource("3_play")
+ignore_texture_size = true
+stretch_mode = 5
+
+[node name="PlayLabel" type="Label" parent="PlayButton" unique_id=1056439407]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 50
+text = "JOGAR"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="QuitButton" type="TextureButton" parent="." unique_id=1505942180]
+layout_mode = 0
+offset_left = 190.0
+offset_top = 1505.0
+offset_right = 890.0
+offset_bottom = 1680.0
+texture_normal = ExtResource("4_quit")
+ignore_texture_size = true
+stretch_mode = 5
+
+[node name="QuitLabel" type="Label" parent="QuitButton" unique_id=1642398771]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 50
+text = "SAIR"
+horizontal_alignment = 1
+vertical_alignment = 1

@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://dgwn0j577b7ix" path="res://scripts/player.gd" id="1_3vyb7"]
 [ext_resource type="Texture2D" uid="uid://cbcfqcnlvb4oy" path="res://assets/sprites/gabriel.png" id="2_g2els"]
+[ext_resource type="Texture2D" uid="uid://c3nriwxek2fxs" path="res://assets/sprites/laura.png" id="3_laura"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_vhohb"]
 size = Vector2(139, 147)
@@ -9,6 +10,8 @@ size = Vector2(139, 147)
 [node name="Player" type="CharacterBody2D" unique_id=2060779848]
 position = Vector2(11, 18)
 script = ExtResource("1_3vyb7")
+gabriel_texture = ExtResource("2_g2els")
+laura_texture = ExtResource("3_laura")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=977548699]
 position = Vector2(-2.5, 89.5)

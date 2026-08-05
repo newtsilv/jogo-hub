@@ -29,6 +29,11 @@ const SORT_Z_OFFSET := 2048
 @export var idle_transition_speed: float = 6.0
 
 
+@export_category("Personagem")
+@export var gabriel_texture: Texture2D
+@export var laura_texture: Texture2D
+
+
 var target_position: Vector2
 var is_moving: bool = false
 
@@ -42,6 +47,7 @@ var stuck_time: float = 0.0
 
 
 @onready var visual: Node2D = $Visual
+@onready var body: Sprite2D = $Visual/Body
 @onready var sort_point: Marker2D = $SortPoint
 
 
@@ -49,8 +55,20 @@ func _ready() -> void:
 	target_position = global_position
 	last_position = global_position
 
+	apply_selected_character()
 	reset_visual_immediately()
 	update_z_index()
+
+
+func apply_selected_character() -> void:
+	match GameState.selected_character:
+		GameState.Character.LAURA:
+			if laura_texture != null:
+				body.texture = laura_texture
+
+		_:
+			if gabriel_texture != null:
+				body.texture = gabriel_texture
 
 
 func _physics_process(delta: float) -> void:
