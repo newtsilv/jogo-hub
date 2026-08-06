@@ -40,7 +40,7 @@ color = Color(0.49148542, 0.4759413, 0.46510363, 1)
 polygon = PackedVector2Array(1, 1, 736, 0, 726.57904, 1323.8492, -9.799432, 1323.8492)
 
 [node name="Sprite2D" type="Sprite2D" parent="World" unique_id=412978740]
-position = Vector2(-1946.3097, -71.80415)
+position = Vector2(-1955, -15.000004)
 scale = Vector2(0.43108547, 0.43410558)
 texture = ExtResource("3_d13ii")
 
