@@ -73,7 +73,7 @@ pin_name = "hub"
 pin_texture = ExtResource("7_074og")
 
 [node name="Gabriel" parent="World/Entities" unique_id=1335867149 instance=ExtResource("5_5vw27")]
-position = Vector2(658, 217)
+position = Vector2(693, 217)
 character_name = "Gabriel"
 world_sprite = ExtResource("10_1u8w0")
 portrait = ExtResource("10_1u8w0")
