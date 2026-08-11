@@ -1,0 +1,28 @@
+[gd_scene format=3 uid="uid://cjpectbw87rjj"]
+
+[ext_resource type="Script" uid="uid://c54k7ejefbpbf" path="res://scripts/sortable_object.gd" id="1_hd03o"]
+[ext_resource type="Texture2D" uid="uid://myrrgt13iihd" path="res://assets/sprites/moveis/mesa redonda.png" id="2_hd03o"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_0t180"]
+radius = 35.380707
+height = 87.4111
+
+[node name="Node2D" type="Node2D" unique_id=2130827776]
+script = ExtResource("1_hd03o")
+
+[node name="Area2D" type="Area2D" parent="." unique_id=1588213173]
+
+[node name="SortPoint" type="Marker2D" parent="Area2D" unique_id=1130601585]
+position = Vector2(0, 174)
+
+[node name="Sprite2D" type="Sprite2D" parent="Area2D" unique_id=3280901]
+position = Vector2(-6.999999, 54)
+scale = Vector2(0.2923077, 0.28107378)
+texture = ExtResource("2_hd03o")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Area2D" unique_id=410283567]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D/StaticBody2D" unique_id=351245629]
+position = Vector2(-6.0000005, 78.00001)
+scale = Vector2(0.48048782, 0.48048818)
+shape = SubResource("CapsuleShape2D_0t180")

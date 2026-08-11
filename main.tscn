@@ -1,0 +1,326 @@
+[gd_scene format=3 uid="uid://7f26qiun175"]
+
+[ext_resource type="PackedScene" uid="uid://bgtjgeujinjtw" path="res://scenes/player.tscn" id="2_h2yge"]
+[ext_resource type="Texture2D" uid="uid://q8ierayvf20w" path="res://assets/sprites/cenario-chao.png" id="3_d13ii"]
+[ext_resource type="PackedScene" uid="uid://cd4dkennonej7" path="res://scenes/NPC.tscn" id="5_5vw27"]
+[ext_resource type="PackedScene" uid="uid://biar43v5mbpbi" path="res://mesa.tscn" id="6_1u8w0"]
+[ext_resource type="Texture2D" uid="uid://4dxsdrgapbb0" path="res://assets/sprites/pin.png" id="7_074og"]
+[ext_resource type="Texture2D" uid="uid://ju5m54dgunw5" path="res://assets/sprites/emanuel.png" id="7_ryguw"]
+[ext_resource type="Texture2D" uid="uid://dqkrbogi5rfhh" path="res://assets/sprites/dialogo.png" id="9_4c57u"]
+[ext_resource type="Texture2D" uid="uid://c3nriwxek2fxs" path="res://assets/sprites/laura.png" id="9_d13ii"]
+[ext_resource type="Texture2D" uid="uid://cbcfqcnlvb4oy" path="res://assets/sprites/gabriel.png" id="10_1u8w0"]
+[ext_resource type="Texture2D" uid="uid://4ln5f8bjuuo4" path="res://assets/sprites/luz.png" id="17_cegan"]
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_ryguw"]
+load_path = "res://.godot/imported/emanuel.png-1c8cb535e6924c35312464ca3d711993.ctex"
+
+[node name="Main" type="Node2D" unique_id=603405120]
+
+[node name="World" type="Node2D" parent="." unique_id=1604863919]
+
+[node name="Floor" type="Polygon2D" parent="World" unique_id=1501008318]
+z_index = -10
+position = Vector2(1.4121337, 0)
+scale = Vector2(1.4707112, 1.4707114)
+color = Color(0.49148542, 0.4759413, 0.46510363, 1)
+polygon = PackedVector2Array(1, 1, 736, 0, 726.57904, 1323.8492, -9.799432, 1323.8492)
+
+[node name="Sprite2D" type="Sprite2D" parent="World" unique_id=412978740]
+z_index = -10
+position = Vector2(-1946.3097, -71.80415)
+scale = Vector2(0.43108547, 0.43410558)
+texture = ExtResource("3_d13ii")
+
+[node name="Objects" type="Node2D" parent="World" unique_id=60916716]
+position = Vector2(80, 160)
+
+[node name="Entities" type="Node2D" parent="World" unique_id=1192308277]
+y_sort_enabled = true
+
+[node name="Emanuel" parent="World/Entities" unique_id=1905267183 instance=ExtResource("5_5vw27")]
+position = Vector2(-590, 192)
+character_name = "Emanuel"
+world_sprite = SubResource("CompressedTexture2D_ryguw")
+portrait = ExtResource("7_ryguw")
+dialogue_id = "emanuel_intro"
+default_line = "sou emanuel"
+objective_order = 1
+pin_name = "Inc"
+pin_texture = ExtResource("7_074og")
+
+[node name="Laura" parent="World/Entities" unique_id=408815405 instance=ExtResource("5_5vw27")]
+position = Vector2(-1095, 844)
+character_name = "Laura"
+world_sprite = ExtResource("9_d13ii")
+portrait = ExtResource("9_d13ii")
+dialogue_id = "laura_intro"
+default_line = "Oiiii"
+objective_order = 2
+pin_name = "hub"
+pin_texture = ExtResource("7_074og")
+
+[node name="Gabriel" parent="World/Entities" unique_id=1335867149 instance=ExtResource("5_5vw27")]
+position = Vector2(658, 217)
+character_name = "Gabriel"
+world_sprite = ExtResource("10_1u8w0")
+portrait = ExtResource("10_1u8w0")
+dialogue_id = "gabriel_intro"
+default_line = "Opa, Gabriel sou eu"
+pin_name = "Inc"
+pin_texture = ExtResource("7_074og")
+
+[node name="Player" parent="World/Entities" unique_id=2060779848 instance=ExtResource("2_h2yge")]
+position = Vector2(649, 1107)
+
+[node name="Mesa1" parent="World/Entities" unique_id=2130827776 instance=ExtResource("6_1u8w0")]
+position = Vector2(-485, -55)
+
+[node name="Mesa" parent="World/Entities" unique_id=2062572470 instance=ExtResource("6_1u8w0")]
+position = Vector2(150, -55)
+
+[node name="Mesa4" parent="World/Entities" unique_id=1470522798 instance=ExtResource("6_1u8w0")]
+position = Vector2(-2025, -61)
+
+[node name="Mesa5" parent="World/Entities" unique_id=2047893868 instance=ExtResource("6_1u8w0")]
+position = Vector2(-1390, -61)
+
+[node name="Mesa6" parent="World/Entities" unique_id=1928731331 instance=ExtResource("6_1u8w0")]
+position = Vector2(-3660, -55)
+
+[node name="Mesa7" parent="World/Entities" unique_id=376846923 instance=ExtResource("6_1u8w0")]
+position = Vector2(-3025, -55)
+
+[node name="Mesa2" parent="World/Entities" unique_id=971756487 instance=ExtResource("6_1u8w0")]
+position = Vector2(144, 703)
+
+[node name="Mesa3" parent="World/Entities" unique_id=1269872503 instance=ExtResource("6_1u8w0")]
+position = Vector2(-490, 703)
+
+[node name="UI" type="CanvasLayer" parent="." unique_id=475629542]
+
+[node name="HUD" type="Node2D" parent="UI" unique_id=271365660]
+position = Vector2(-3, -2)
+
+[node name="Dialog" type="Node2D" parent="UI" unique_id=1252569314]
+position = Vector2(-1, 6)
+
+[node name="DialogueBox" type="Control" parent="UI/Dialog" unique_id=1371134885]
+custom_maximum_size = Vector2(-1, 500)
+layout_mode = 3
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -18.0
+offset_top = 1332.0
+offset_right = -18.0
+offset_bottom = 1332.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="Portrait" type="TextureRect" parent="UI/Dialog/DialogueBox" unique_id=1482608626]
+layout_mode = 0
+offset_left = 86.0
+offset_top = -300.0
+offset_right = 506.0
+offset_bottom = 413.0
+mouse_filter = 2
+expand_mode = 1
+stretch_mode = 5
+
+[node name="TextboxBackground" type="TextureRect" parent="UI/Dialog/DialogueBox" unique_id=1312907964]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 34.0
+offset_top = 107.0
+offset_right = 1059.433
+offset_bottom = 487.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("9_4c57u")
+expand_mode = 1
+
+[node name="CharacterName" type="Label" parent="UI/Dialog/DialogueBox" unique_id=339298365]
+layout_mode = 0
+offset_left = 98.0
+offset_top = 188.0
+offset_right = 409.0
+offset_bottom = 257.0
+theme_override_colors/font_color = Color(0.21176471, 0.019607844, 0.5176471, 1)
+theme_override_font_sizes/font_size = 45
+
+[node name="DialogText" type="RichTextLabel" parent="UI/Dialog/DialogueBox" unique_id=849023003]
+layout_mode = 0
+offset_left = 109.00003
+offset_top = 275.0
+offset_right = 1047.0
+offset_bottom = 451.0
+mouse_filter = 2
+theme_override_font_sizes/normal_font_size = 40
+theme_override_font_sizes/bold_font_size = 60
+bbcode_enabled = true
+scroll_active = false
+
+[node name="InteractionHint" type="Label" parent="UI" unique_id=1297482438]
+visible = false
+offset_left = 58.0
+offset_top = 58.0
+offset_right = 287.0
+offset_bottom = 81.0
+text = "Toque no item para examinar"
+
+[node name="Questions" type="Node2D" parent="UI" unique_id=1109847499]
+
+[node name="QuestionBox" type="Control" parent="UI/Questions" unique_id=702645986]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Background" type="TextureRect" parent="UI/Questions/QuestionBox" unique_id=746771348]
+layout_mode = 0
+offset_left = 156.0
+offset_top = 802.0
+offset_right = 906.0
+offset_bottom = 1709.0
+
+[node name="QuestionText" type="RichTextLabel" parent="UI/Questions/QuestionBox" unique_id=1186589137]
+layout_mode = 0
+offset_left = 276.0
+offset_top = 903.0
+offset_right = 769.0
+offset_bottom = 1029.0
+theme_override_font_sizes/normal_font_size = 40
+
+[node name="FeedbackText" type="Label" parent="UI/Questions/QuestionBox" unique_id=1442133807]
+layout_mode = 0
+offset_left = 302.0
+offset_top = 902.0
+offset_right = 342.0
+offset_bottom = 925.0
+
+[node name="Answer1" type="TextureButton" parent="UI/Questions/QuestionBox" unique_id=1353735561]
+layout_mode = 0
+offset_left = 268.0
+offset_top = 1125.0
+offset_right = 786.0
+offset_bottom = 1254.0
+
+[node name="AnswerLabel" type="Label" parent="UI/Questions/QuestionBox/Answer1" unique_id=602535195]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.24800001
+anchor_top = 0.42600003
+anchor_right = 0.24800001
+anchor_bottom = 0.42600003
+offset_left = -101.46399
+offset_top = -26.954002
+offset_right = 101.53601
+offset_bottom = 28.045998
+theme_override_font_sizes/font_size = 40
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Answer2" type="TextureButton" parent="UI/Questions/QuestionBox" unique_id=2035920990]
+layout_mode = 0
+offset_left = 268.0
+offset_top = 1285.0
+offset_right = 786.0
+offset_bottom = 1414.0
+
+[node name="AnswerLabel" type="Label" parent="UI/Questions/QuestionBox/Answer2" unique_id=1518355440]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.24800001
+anchor_top = 0.42600003
+anchor_right = 0.24800001
+anchor_bottom = 0.42600003
+offset_left = -101.46399
+offset_top = -26.954002
+offset_right = 101.53601
+offset_bottom = 28.045998
+theme_override_font_sizes/font_size = 40
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Answer3" type="TextureButton" parent="UI/Questions/QuestionBox" unique_id=279320410]
+layout_mode = 0
+offset_left = 271.0
+offset_top = 1443.0
+offset_right = 789.0
+offset_bottom = 1572.0
+
+[node name="AnswerLabel" type="Label" parent="UI/Questions/QuestionBox/Answer3" unique_id=1310617681]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.32700002
+anchor_top = 0.47300002
+anchor_right = 0.32700002
+anchor_bottom = 0.47300002
+offset_left = -136.386
+offset_top = -29.017002
+offset_right = 136.61398
+offset_bottom = 28.982998
+theme_override_font_sizes/font_size = 40
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Reward" type="Node2D" parent="UI" unique_id=841631662]
+
+[node name="RewardBox" type="Control" parent="UI/Reward" unique_id=1392410111]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Background" type="TextureRect" parent="UI/Reward/RewardBox" unique_id=1822028281]
+visible = false
+layout_mode = 0
+offset_left = -75.0
+offset_top = 401.0001
+offset_right = 1890.0792
+offset_bottom = 2443.857
+scale = Vector2(0.63, 0.63)
+texture = ExtResource("17_cegan")
+
+[node name="PinImage" type="TextureRect" parent="UI/Reward/RewardBox" unique_id=1185926178]
+layout_mode = 0
+offset_left = 359.0
+offset_top = 899.0
+offset_right = 943.90564
+offset_bottom = 1492.3826
+scale = Vector2(0.53, 0.53)
+expand_mode = 1
+stretch_mode = 3
+
+[node name="RewardText" type="Label" parent="UI/Reward/RewardBox" unique_id=1813463685]
+layout_mode = 0
+offset_left = 423.0
+offset_top = 651.0
+offset_right = 791.0
+offset_bottom = 891.0
+theme_override_font_sizes/font_size = 50
+text = "aaaaaaaaaaaa"
+
+[node name="GameOver" type="Node2D" parent="UI" unique_id=827580298]
+
+[node name="GameOverBox" type="Control" parent="UI/GameOver" unique_id=72894295]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Background" type="TextureRect" parent="UI/GameOver/GameOverBox" unique_id=1087653380]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="GameOverText" type="Label" parent="UI/GameOver/GameOverBox" unique_id=556489625]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0

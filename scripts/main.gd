@@ -1,6 +1,9 @@
 extends Node2D
 
 
+const ClickIndicatorScript := preload("res://scripts/click_indicator.gd")
+
+
 @export_category("Interação")
 @export var hint_distance: float = 200.0
 
@@ -26,9 +29,10 @@ var rewarded_npc: NPC = null
 var npc_by_name: Dictionary = {}
 
 var collected_pins: Array[String] = []
-
+var completed_npcs: Array[NPC] = []
 
 @onready var entities: Node2D = $World/Entities
+@onready var world: Node2D = $World
 @onready var player: Player = $World/Entities/Player
 
 
@@ -87,6 +91,7 @@ func _ready() -> void:
 
 func _process(_delta: float) -> void:
 	update_npc_proximity()
+	update_objective_arrow()
 
 
 # =========================================================
@@ -120,7 +125,14 @@ func _unhandled_input(event: InputEvent) -> void:
 		return
 
 	clear_current_interaction()
+	show_click_indicator(world_position)
 	player.move_to(world_position)
+
+
+func show_click_indicator(world_position: Vector2) -> void:
+	var indicator := ClickIndicatorScript.new()
+	world.add_child(indicator)
+	indicator.global_position = world_position
 
 
 func screen_to_world(
@@ -201,6 +213,9 @@ func update_npc_proximity() -> void:
 
 
 func _on_npc_selected(npc: NPC) -> void:
+	if not npc.interaction_enabled:
+		return
+
 	if interface_is_open():
 		return
 
@@ -222,26 +237,19 @@ func _on_npc_selected(npc: NPC) -> void:
 
 	target_npc = npc
 
-	player.move_to(
-		npc.interaction_point.global_position
-	)
+	player.move_to(npc.interaction_point.global_position)
 
 
 func show_npc_hint() -> void:
-	if nearby_npc == null:
-		return
-
-	hint_is_visible = true
-
-	interaction_hint.text = (
-		"Toque em %s para conversar"
-		% nearby_npc.character_name
-	)
-
-	show_hint_animation()
+	hint_is_visible = false
+	interaction_hint.hide()
+	return
 
 
 func open_npc_dialogue(npc: NPC) -> void:
+	if not npc.interaction_enabled:
+		return
+
 	hide_interaction_hint()
 	player.stop_movement()
 
@@ -262,15 +270,53 @@ func get_npc_conversation(
 			return [
 				make_dialogue_line(
 					"Gabriel",
-					"Opa, Gabriel sou eu."
-				),
-				make_dialogue_line(
-					"Player",
-					"Onde fica tal sala, sei lá?"
+					"Opa! Gabriel sou eu. Seja muito bem-vindo ao Oxygeni Hub!",
+					"base"
 				),
 				make_dialogue_line(
 					"Gabriel",
-					"Antes disso, responde uma pergunta."
+					"Vou acompanhar você no início da sua jornada.",
+					"joinha"
+				),
+				make_dialogue_line(
+					"Gabriel",
+					"Este lugar foi criado para pessoas que querem aprender, criar projetos e transformar ideias em soluções usando tecnologia.",
+					"explicando"
+				),
+				make_dialogue_line(
+					"Gabriel",
+					"Aqui você vai encontrar diferentes áreas de aprendizado. Cada uma ensina uma habilidade importante para entrar no mundo da tecnologia.",
+					"aponta_cima"
+				),
+				make_dialogue_line(
+					"Gabriel",
+					"Hoje sua missão é conquistar a sua primeira faixa: a Faixa Branca.",
+					"joinha"
+				),
+				make_dialogue_line(
+					"Gabriel",
+					"Mas ninguém recebe uma faixa sem antes aprender o básico.",
+					"base"
+				),
+				make_dialogue_line(
+					"Gabriel",
+					"Você precisará visitar nossos especialistas, completar seus desafios e coletar os três Pins da Jornada.",
+					"explicando"
+				),
+				make_dialogue_line(
+					"Gabriel",
+					"Cada Pin representa um conhecimento que fará parte da sua evolução.",
+					"base"
+				),
+				make_dialogue_line(
+					"Gabriel",
+					"Quando completar sua coleção, procure o professor Marcos Barros.",
+					"aponta_cima"
+				),
+				make_dialogue_line(
+					"Gabriel",
+					"Boa sorte! Sua jornada começa agora.",
+					"joinha"
 				)
 			]
 
@@ -278,15 +324,33 @@ func get_npc_conversation(
 			return [
 				make_dialogue_line(
 					"Emanuel",
-					"Sou Emanuel."
-				),
-				make_dialogue_line(
-					"Player",
-					"Diálogo."
+					"Oppa, nem percebi que você estava aí! Olá! Eu sou Emanuel.",
+					"base"
 				),
 				make_dialogue_line(
 					"Emanuel",
-					"Responde essa pergunta aí."
+					"Bem-vindo à Incode. Aqui damos os primeiros passos no universo da programação.",
+					"joinha"
+				),
+				make_dialogue_line(
+					"Emanuel",
+					"Programar é aprender a resolver problemas usando lógica.",
+					"explicando"
+				),
+				make_dialogue_line(
+					"Emanuel",
+					"Não importa se você nunca escreveu uma linha de código. Todo desenvolvedor começou exatamente do zero.",
+					"base"
+				),
+				make_dialogue_line(
+					"Emanuel",
+					"Na Incode você aprenderá linguagens como Python, entenderá algoritmos e desenvolverá raciocínio lógico para construir sistemas.",
+					"explicando"
+				),
+				make_dialogue_line(
+					"Emanuel",
+					"Antes de continuar, quero fazer algumas perguntas para saber se você está preparado.",
+					"aponta_cima"
 				)
 			]
 
@@ -294,15 +358,67 @@ func get_npc_conversation(
 			return [
 				make_dialogue_line(
 					"Laura",
-					"Oiii."
-				),
-				make_dialogue_line(
-					"Player",
-					"O que tenho que fazer agora?"
+					"Oie! Eu sou a Laura. Seja bem-vindo à TechX.",
+					"feliz"
 				),
 				make_dialogue_line(
 					"Laura",
-					"Acertar minha pergunta."
+					"Aqui transformamos ideias em experiências visuais.",
+					"base"
+				),
+				make_dialogue_line(
+					"Laura",
+					"Um sistema precisa funcionar bem, mas também precisa ser agradável, organizado e fácil de usar.",
+					"explicando"
+				),
+				make_dialogue_line(
+					"Laura",
+					"No Front-end criamos tudo aquilo que o usuário vê e utiliza.",
+					"base"
+				),
+				make_dialogue_line(
+					"Laura",
+					"Botões, menus, telas, animações e páginas fazem parte desse universo.",
+					"feliz"
+				),
+				make_dialogue_line(
+					"Laura",
+					"Agora quero ver se você já aprendeu alguns conceitos.",
+					"explicando"
+				)
+			]
+
+		"mb_intro":
+			return [
+				make_dialogue_line(
+					"MB",
+					"Parabéns. Você chegou até aqui porque demonstrou dedicação.",
+					"base"
+				),
+				make_dialogue_line(
+					"MB",
+					"Eu sou Marcos Barros. Antes de entregar sua Faixa Branca, quero apresentar a terceira trilha.",
+					"joinha"
+				),
+				make_dialogue_line(
+					"MB",
+					"Enquanto o Front-end mostra tudo o que o usuário vê, o Back-end faz todo o trabalho por trás das telas.",
+					"explicando"
+				),
+				make_dialogue_line(
+					"MB",
+					"É nele que ficam as regras do sistema, os servidores, os bancos de dados e a lógica que faz as aplicações funcionarem.",
+					"base"
+				),
+				make_dialogue_line(
+					"MB",
+					"Em outras palavras: se o Front-end é a vitrine, o Back-end é o motor que faz tudo acontecer.",
+					"explicando"
+				),
+				make_dialogue_line(
+					"MB",
+					"Agora falta um último desafio sobre o Oxygeni Hub.",
+					"controle"
 				)
 			]
 
@@ -312,19 +428,23 @@ func get_npc_conversation(
 
 func make_dialogue_line(
 	speaker_name: String,
-	text: String
+	text: String,
+	expression_name: String = "base"
 ) -> Dictionary:
 	return {
 		"speaker": speaker_name,
 		"text": text,
+		"expression": expression_name,
 		"portrait": get_character_portrait(
-			speaker_name
+			speaker_name,
+			expression_name
 		)
 	}
 
 
 func get_character_portrait(
-	speaker_name: String
+	speaker_name: String,
+	expression_name: String = "base"
 ) -> Texture2D:
 	if speaker_name == player_dialogue_name:
 		return player_portrait
@@ -336,7 +456,7 @@ func get_character_portrait(
 
 	if npc_value is NPC:
 		var npc: NPC = npc_value as NPC
-		return npc.portrait
+		return npc.get_portrait_for_expression(expression_name)
 
 	return null
 
@@ -380,102 +500,132 @@ func get_questions_for_npc(
 	npc: NPC
 ) -> Array[Dictionary]:
 	match npc.dialogue_id:
-		"gabriel_intro":
-			return [
-				{
-					"question": "Quantos anos tem a Incode?",
-					"answers": [
-						"2 anos",
-						"4 anos",
-						"6 anos"
-					],
-					"correct_answer": 2,
-					"theme": QuestionBox.QuestionTheme.INCODE
-				},
-				{
-					"question": "A Incode trabalha principalmente com:",
-					"answers": [
-						"Inovação e tecnologia",
-						"Turismo",
-						"Culinária"
-					],
-					"correct_answer": 0,
-					"theme": QuestionBox.QuestionTheme.INCODE
-				},
-				{
-					"question": "Qual destas opções combina com a Incode?",
-					"answers": [
-						"Criação de soluções",
-						"Evitar tecnologia",
-						"Somente trabalho manual"
-					],
-					"correct_answer": 0,
-					"theme": QuestionBox.QuestionTheme.INCODE
-				}
-			]
-
 		"emanuel_intro":
 			return [
 				{
-					"question": "Qual é uma função do Hub?",
+					"question": "A Incode Tech School é conhecida como:",
 					"answers": [
-						"Conectar pessoas e projetos",
-						"Vender roupas",
-						"Organizar campeonatos"
+						"Escola de Marketing Digital",
+						"Escola de Programação da Vida Real",
+						"Escola de Administração Empresarial"
 					],
-					"correct_answer": 0,
-					"theme": QuestionBox.QuestionTheme.HUB
+					"correct_answer": 1,
+					"theme": QuestionBox.QuestionTheme.INCODE
 				},
 				{
-					"question": "O Hub incentiva principalmente:",
+					"question": "Quantos módulos compõem a formação principal da Incode Tech School?",
 					"answers": [
-						"Inovação e colaboração",
-						"Isolamento",
-						"Trabalho sem equipe"
+						"2 módulos",
+						"3 módulos",
+						"6 módulos"
 					],
-					"correct_answer": 0,
-					"theme": QuestionBox.QuestionTheme.HUB
+					"correct_answer": 1,
+					"theme": QuestionBox.QuestionTheme.INCODE
 				},
 				{
-					"question": "O Hub serve como espaço para:",
+					"question": "Qual diferencial existe no terceiro módulo da Incode?",
 					"answers": [
-						"Projetos e ideias",
-						"Somente armazenamento",
-						"Somente vendas"
+						"É focado só em teoria",
+						"Possui parceria com empresas e desafios reais",
+						"É voltado só para inteligência artificial"
+					],
+					"correct_answer": 1,
+					"theme": QuestionBox.QuestionTheme.INCODE
+				},
+				{
+					"question": "Qual metodologia faz parte da proposta da Incode?",
+					"answers": [
+						"Aprendizagem baseada em desafios",
+						"Apenas aulas expositivas",
+						"Ensino exclusivamente por provas"
 					],
 					"correct_answer": 0,
-					"theme": QuestionBox.QuestionTheme.HUB
+					"theme": QuestionBox.QuestionTheme.INCODE
 				}
 			]
 
 		"laura_intro":
 			return [
 				{
-					"question": "O TechX está relacionado a:",
+					"question": "Qual é a principal proposta do TechX?",
 					"answers": [
-						"Tecnologia",
-						"Culinária",
-						"Turismo"
+						"Criar uma competição esportiva",
+						"Aproximar pessoas de tecnologias e inovação",
+						"Oferecer somente aulas de matemática"
+					],
+					"correct_answer": 1,
+					"theme": QuestionBox.QuestionTheme.HUB
+				},
+				{
+					"question": "Qual abordagem combina com uma experiência TechX?",
+					"answers": [
+						"Aprender tecnologia apenas pela teoria",
+						"Experimentar, criar e colocar em prática",
+						"Decorar conceitos sem projetos"
+					],
+					"correct_answer": 1,
+					"theme": QuestionBox.QuestionTheme.HUB
+				},
+				{
+					"question": "Qual tecnologia pode estar relacionada ao TechX?",
+					"answers": [
+						"Inteligência Artificial",
+						"Robótica",
+						"Todas as alternativas anteriores"
+					],
+					"correct_answer": 2,
+					"theme": QuestionBox.QuestionTheme.HUB
+				},
+				{
+					"question": "Qual é uma vantagem do TechX para estudantes?",
+					"answers": [
+						"Contato prático com tecnologias e carreiras",
+						"Evitar profissionais do mercado",
+						"Trabalhar somente conteúdos teóricos"
+					],
+					"correct_answer": 0,
+					"theme": QuestionBox.QuestionTheme.HUB
+				}
+			]
+
+		"mb_intro":
+			return [
+				{
+					"question": "Qual é a proposta central do Oxygeni Hub?",
+					"answers": [
+						"Ser apenas um espaço de eventos",
+						"Conectar pessoas, empresas e tecnologia",
+						"Oferecer somente cursos de programação"
+					],
+					"correct_answer": 1,
+					"theme": QuestionBox.QuestionTheme.HUB
+				},
+				{
+					"question": "Qual ambiente tecnológico é ligado ao Oxygeni Hub?",
+					"answers": [
+						"LIA - Laboratório de Inteligência Artificial",
+						"LIFA - Laboratório de Finanças Aplicadas",
+						"LEMA - Laboratório de Marketing"
 					],
 					"correct_answer": 0,
 					"theme": QuestionBox.QuestionTheme.HUB
 				},
 				{
-					"question": "Qual opção combina com o TechX?",
+					"question": "Quais públicos o Oxygeni Hub busca aproximar?",
 					"answers": [
-						"Experimentação tecnológica",
-						"Evitar novas ideias",
-						"Eliminar projetos digitais"
+						"Apenas estudantes e professores",
+						"Talentos, professores, empresas e comunidade",
+						"Apenas investidores e empresários"
 					],
-					"correct_answer": 0,
+					"correct_answer": 1,
 					"theme": QuestionBox.QuestionTheme.HUB
 				},
 				{
-					"question": "O TechX estimula:",
+					"question": "Qual atividade pode acontecer no Oxygeni Hub com empresas?",
 					"answers": [
-						"Novas soluções",
-						"Menos criatividade",
-						"Isolamento entre equipes"
+						"Hackathons e desafios corporativos",
+						"Apenas aulas tradicionais",
+						"Apenas competições esportivas"
 					],
 					"correct_answer": 0,
 					"theme": QuestionBox.QuestionTheme.HUB
@@ -533,7 +683,7 @@ func _on_reward_closed() -> void:
 
 	if collected_pins.size() >= 3:
 		print(
-			"Parabéns! Os três pins foram coletados."
+			"Parabéns! Todos os pins foram coletados."
 		)
 
 
@@ -546,41 +696,44 @@ func _on_restart_requested() -> void:
 # =========================================================
 
 func update_objective_arrow() -> void:
+	var closest_npc: NPC = get_closest_available_npc()
+
 	for npc: NPC in npc_objective_order:
 		npc.hide_objective_arrow()
 
-	if (
-		current_npc_objective_index
-		>= npc_objective_order.size()
-	):
+	if closest_npc == null:
+		player.hide_objective_arrow()
 		return
 
-	var current_objective_npc: NPC = (
-		npc_objective_order[
-			current_npc_objective_index
-		]
-	)
+	player.point_objective_arrow_to(closest_npc.global_position)
 
-	current_objective_npc.show_objective_arrow()
+
+func get_closest_available_npc() -> NPC:
+	var closest_npc: NPC = null
+	var closest_distance := INF
+
+	for npc: NPC in npc_objective_order:
+		if not npc.interaction_enabled:
+			continue
+
+		var distance: float = player.global_position.distance_squared_to(
+			npc.global_position
+		)
+
+		if distance < closest_distance:
+			closest_distance = distance
+			closest_npc = npc
+
+	return closest_npc
 
 
 func finish_npc_interaction(npc: NPC) -> void:
-	if (
-		current_npc_objective_index
-		>= npc_objective_order.size()
-	):
+	if completed_npcs.has(npc):
 		return
 
-	var current_objective_npc: NPC = (
-		npc_objective_order[
-			current_npc_objective_index
-		]
-	)
+	completed_npcs.append(npc)
+	npc.set_interaction_enabled(false)
 
-	if npc != current_objective_npc:
-		return
-
-	current_npc_objective_index += 1
 	update_objective_arrow()
 
 

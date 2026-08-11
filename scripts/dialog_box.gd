@@ -23,6 +23,7 @@ var current_line_index: int = 0
 
 var current_tween: Tween
 var typing_tween: Tween
+var portrait_tween: Tween
 
 var original_position: Vector2
 var dialogue_is_open: bool = false
@@ -99,12 +100,46 @@ func show_current_line() -> void:
 	)
 
 	character_name_label.text = speaker_name
-	portrait.texture = portrait_texture
+	show_portrait(portrait_texture)
 
 	dialogue_text_label.text = dialogue_text
 	dialogue_text_label.visible_characters = 0
 
 	start_typing(dialogue_text)
+
+
+func show_portrait(portrait_texture: Texture2D) -> void:
+	if portrait.texture == portrait_texture:
+		return
+
+	if portrait_tween != null:
+		portrait_tween.kill()
+
+	portrait.texture = portrait_texture
+	portrait.pivot_offset = portrait.size / 2.0
+	portrait.modulate.a = 0.0
+	portrait.scale = Vector2.ONE * 0.96
+
+	portrait_tween = create_tween()
+	portrait_tween.set_parallel(true)
+
+	portrait_tween.tween_property(
+		portrait,
+		"modulate:a",
+		1.0,
+		0.18
+	)
+
+	portrait_tween.tween_property(
+		portrait,
+		"scale",
+		Vector2.ONE,
+		0.18
+	).set_trans(
+		Tween.TRANS_SINE
+	).set_ease(
+		Tween.EASE_OUT
+	)
 
 
 func start_typing(text: String) -> void:
@@ -203,6 +238,9 @@ func close_dialogue() -> void:
 	if typing_tween != null:
 		typing_tween.kill()
 
+	if portrait_tween != null:
+		portrait_tween.kill()
+
 	if current_tween != null:
 		current_tween.kill()
 
@@ -234,5 +272,7 @@ func close_dialogue() -> void:
 	dialogue_lines.clear()
 	current_line_index = 0
 	dialogue_text_label.visible_characters = -1
+	portrait.modulate.a = 1.0
+	portrait.scale = Vector2.ONE
 
 	dialogue_finished.emit()

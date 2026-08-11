@@ -12,6 +12,10 @@ func _ready() -> void:
 	update_z_index()
 
 
+func _process(_delta: float) -> void:
+	update_z_index()
+
+
 func update_z_index() -> void:
 	if sort_point == null:
 		push_error(

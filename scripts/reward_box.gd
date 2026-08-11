@@ -32,11 +32,15 @@ func show_reward(
 
 	pin_image.texture = pin_texture
 
+	var pin_article: String = "da"
+	if pin_name == "Hub":
+		pin_article = "do"
+
 	reward_text.text = (
 		"Parabéns!\n"
-		+ "Você ganhou o pin %s!\n\n"
+		+ "Você ganhou o pin dourado %s %s!\n\n"
 		+ "Toque na tela para continuar."
-	) % pin_name
+	) % [pin_article, pin_name]
 
 	show()
 

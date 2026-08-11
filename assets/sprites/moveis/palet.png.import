@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c36l7ojikt6yl"
-path="res://.godot/imported/professor.png-15c894150254711e86c1f3cabd7bdda8.ctex"
+uid="uid://ragcoui0qpd"
+path="res://.godot/imported/palet.png-25dcd34551ef36b3777d7ffeddb23954.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/sprites/professor.png"
-dest_files=["res://.godot/imported/professor.png-15c894150254711e86c1f3cabd7bdda8.ctex"]
+source_file="res://assets/sprites/moveis/palet.png"
+dest_files=["res://.godot/imported/palet.png-25dcd34551ef36b3777d7ffeddb23954.ctex"]
 
 [params]
 

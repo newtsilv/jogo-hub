@@ -68,6 +68,11 @@ enum QuestionTheme {
 @export var flash_duration: float = 0.12
 
 
+@export_category("Texto das respostas")
+@export var answer_label_margin: float = 28.0
+@export var answer_label_font_size: int = 25
+
+
 # =========================================================
 # REFERÊNCIAS DOS NÓS
 # =========================================================
@@ -123,6 +128,9 @@ func _ready() -> void:
 
 	for index: int in range(answer_buttons.size()):
 		var button: TextureButton = answer_buttons[index]
+		var answer_label: Label = answer_labels[index]
+
+		configure_answer_label(answer_label)
 
 		if button == null:
 			push_error(
@@ -136,6 +144,30 @@ func _ready() -> void:
 		)
 
 	hide()
+
+
+func configure_answer_label(answer_label: Label) -> void:
+	if answer_label == null:
+		return
+
+	answer_label.anchor_left = 0.0
+	answer_label.anchor_top = 0.0
+	answer_label.anchor_right = 1.0
+	answer_label.anchor_bottom = 1.0
+
+	answer_label.offset_left = answer_label_margin
+	answer_label.offset_top = 8.0
+	answer_label.offset_right = -answer_label_margin
+	answer_label.offset_bottom = -8.0
+
+	answer_label.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
+	answer_label.vertical_alignment = VERTICAL_ALIGNMENT_CENTER
+	answer_label.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
+	answer_label.clip_text = true
+	answer_label.add_theme_font_size_override(
+		"font_size",
+		answer_label_font_size
+	)
 
 
 # =========================================================
@@ -192,6 +224,7 @@ func start_question(question: Dictionary) -> void:
 			""
 		)
 	)
+	question_text_label.scroll_active = false
 
 	for index: int in range(answer_buttons.size()):
 		var button: TextureButton = answer_buttons[index]

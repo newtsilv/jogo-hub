@@ -6,6 +6,7 @@ signal selected(npc: NPC)
 
 
 const SORT_Z_OFFSET := 2048
+const EXPRESSION_DIRECTORY := "res://assets/sprites/expressions"
 
 
 @export_category("Personagem")
@@ -26,6 +27,10 @@ const SORT_Z_OFFSET := 2048
 @export var pin_texture: Texture2D
 
 
+@export_category("Interação")
+@export var interaction_enabled: bool = true
+
+
 @export_category("Seta")
 @export var arrow_bob_height: float = 8.0
 @export var arrow_bob_speed: float = 4.0
@@ -41,7 +46,7 @@ const SORT_Z_OFFSET := 2048
 
 @onready var visual: Sprite2D = $Visual
 @onready var interaction_point: Marker2D = $InteractionPoint
-@onready var name_label: Label = $NameLabel
+@onready var name_label: Label = get_node_or_null("NameLabel") as Label
 @onready var objective_arrow: Sprite2D = $ObjectiveArrow
 @onready var sort_point: Marker2D = $SortPoint
 
@@ -52,13 +57,17 @@ var arrow_original_position: Vector2
 var idle_time: float = 0.0
 var visual_original_position: Vector2
 var visual_original_scale: Vector2
+var portrait_by_expression: Dictionary = {}
 
 
 func _ready() -> void:
-	name_label.text = character_name
+	if name_label != null:
+		name_label.text = character_name
 
 	if world_sprite != null:
 		visual.texture = world_sprite
+
+	load_expression_portraits()
 
 	arrow_original_position = objective_arrow.position
 
@@ -179,6 +188,10 @@ func _input_event(
 	if not was_pressed:
 		return
 
+	if not interaction_enabled:
+		get_viewport().set_input_as_handled()
+		return
+
 	selected.emit(self)
 	get_viewport().set_input_as_handled()
 
@@ -194,11 +207,70 @@ func hide_objective_arrow() -> void:
 	objective_arrow.position = arrow_original_position
 
 
+func set_interaction_enabled(enabled: bool) -> void:
+	interaction_enabled = enabled
+	hide_objective_arrow()
+
+
 func get_default_dialogue() -> Array[Dictionary]:
 	return [
 		{
 			"speaker": character_name,
 			"text": default_line,
-			"portrait": portrait
+			"expression": "base",
+			"portrait": get_portrait_for_expression("base")
 		}
 	]
+
+
+func load_expression_portraits() -> void:
+	portrait_by_expression.clear()
+
+	for expression_name: String in [
+		"base",
+		"joinha",
+		"aponta_cima",
+		"pensante",
+		"feliz",
+		"explicando",
+		"orgulhosa",
+		"controle"
+	]:
+		var expression_path: String = (
+			"%s/%s_%s.png"
+			% [
+				EXPRESSION_DIRECTORY,
+				character_name.to_lower(),
+				expression_name
+			]
+		)
+
+		if not ResourceLoader.exists(expression_path):
+			continue
+
+		portrait_by_expression[expression_name] = load(expression_path)
+
+
+func get_portrait_for_expression(expression_name: String) -> Texture2D:
+	var normalized_expression := expression_name.strip_edges().to_lower()
+
+	if normalized_expression.is_empty():
+		normalized_expression = "base"
+
+	var expression_value: Variant = portrait_by_expression.get(
+		normalized_expression,
+		null
+	)
+
+	if expression_value is Texture2D:
+		return expression_value as Texture2D
+
+	var base_value: Variant = portrait_by_expression.get(
+		"base",
+		null
+	)
+
+	if base_value is Texture2D:
+		return base_value as Texture2D
+
+	return portrait
