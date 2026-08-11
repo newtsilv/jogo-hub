@@ -1,0 +1,31 @@
+[gd_scene format=3 uid="uid://kp7r0i1enuey"]
+
+[ext_resource type="Script" uid="uid://bp8wn42b0pyfp" path="res://scripts/cena_5.gd" id="1_mshi0"]
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_w5fj5"]
+load_path = "res://.godot/imported/Cena_05.png-3ba388bc5d897e7237813008be0dd7ae.ctex"
+
+[node name="Control" type="Control" unique_id=1157065721]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_mshi0")
+
+[node name="TextureRect" type="TextureRect" parent="." unique_id=316797322]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+texture = SubResource("CompressedTexture2D_w5fj5")
+
+[node name="Skip" type="Button" parent="." unique_id=173569909]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 0
+offset_left = 12.0
+offset_top = 5.0
+offset_right = 1080.0
+offset_bottom = 1917.0
+
+[connection signal="pressed" from="Skip" to="." method="_on_skip_pressed"]

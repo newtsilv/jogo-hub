@@ -1,0 +1,28 @@
+[gd_scene format=3 uid="uid://b8klqjnpmwflw"]
+
+[ext_resource type="Texture2D" uid="uid://bis0ntq44h2av" path="res://assets/Figma/Cena_07.png" id="1_5vfl3"]
+[ext_resource type="Script" uid="uid://d4hscfbl8xlg" path="res://scripts/cena_8.gd" id="1_6b6h6"]
+
+[node name="Control" type="Control" unique_id=204046645]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_6b6h6")
+
+[node name="TextureRect" type="TextureRect" parent="." unique_id=1345906130]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("1_5vfl3")
+
+[node name="Start" type="Button" parent="." unique_id=2252439]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 0
+offset_top = -1.0
+offset_right = 1081.0
+offset_bottom = 1919.0
+
+[connection signal="pressed" from="Start" to="." method="_on_start_pressed"]
