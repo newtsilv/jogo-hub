@@ -13,6 +13,11 @@ const ClickIndicatorScript := preload("res://scripts/click_indicator.gd")
 @export var player_portrait: Texture2D
 
 
+@export_category("Câmera de objetivo")
+@export var objective_preview_travel_duration: float = 2.6
+@export var objective_preview_hold_duration: float = 0.45
+
+
 var target_npc: NPC = null
 var nearby_npc: NPC = null
 
@@ -30,10 +35,15 @@ var npc_by_name: Dictionary = {}
 
 var collected_pins: Array[String] = []
 var completed_npcs: Array[NPC] = []
+var objective_preview_tween: Tween
 
 @onready var entities: Node2D = $World/Entities
 @onready var world: Node2D = $World
 @onready var player: Player = $World/Entities/Player
+
+@onready var objective_preview_camera: Camera2D = (
+	$ObjectivePreviewCamera
+)
 
 
 @onready var dialogue_box: DialogueBox = (
@@ -330,12 +340,12 @@ func get_npc_conversation(
 				make_dialogue_line(
 					"Emanuel",
 					"Bem-vindo à Incode. Aqui damos os primeiros passos no universo da programação.",
-					"joinha"
+					"aponta_cima"
 				),
 				make_dialogue_line(
 					"Emanuel",
 					"Programar é aprender a resolver problemas usando lógica.",
-					"explicando"
+					"pensante"
 				),
 				make_dialogue_line(
 					"Emanuel",
@@ -345,7 +355,7 @@ func get_npc_conversation(
 				make_dialogue_line(
 					"Emanuel",
 					"Na Incode você aprenderá linguagens como Python, entenderá algoritmos e desenvolverá raciocínio lógico para construir sistemas.",
-					"explicando"
+					"pensante"
 				),
 				make_dialogue_line(
 					"Emanuel",
@@ -479,6 +489,7 @@ func _on_dialogue_finished() -> void:
 	if question_pool.is_empty():
 		finish_npc_interaction(finished_npc)
 		clear_current_interaction()
+		preview_next_objective()
 		return
 
 	var random_question_value: Variant = (
@@ -685,6 +696,9 @@ func _on_reward_closed() -> void:
 		print(
 			"Parabéns! Todos os pins foram coletados."
 		)
+		return
+
+	preview_next_objective()
 
 
 func _on_restart_requested() -> void:
@@ -735,6 +749,59 @@ func finish_npc_interaction(npc: NPC) -> void:
 	npc.set_interaction_enabled(false)
 
 	update_objective_arrow()
+
+
+func preview_next_objective() -> void:
+	var next_npc: NPC = get_closest_available_npc()
+
+	if next_npc == null:
+		return
+
+	if objective_preview_tween != null:
+		objective_preview_tween.kill()
+		player.make_camera_current()
+
+	objective_preview_camera.global_position = player.global_position
+	objective_preview_camera.enabled = true
+	objective_preview_camera.make_current()
+
+	objective_preview_tween = create_tween()
+
+	objective_preview_tween.tween_property(
+		objective_preview_camera,
+		"global_position",
+		next_npc.global_position,
+		objective_preview_travel_duration
+	).set_trans(
+		Tween.TRANS_SINE
+	).set_ease(
+		Tween.EASE_IN_OUT
+	)
+
+	objective_preview_tween.tween_interval(
+		objective_preview_hold_duration
+	)
+
+	objective_preview_tween.tween_property(
+		objective_preview_camera,
+		"global_position",
+		player.global_position,
+		objective_preview_travel_duration
+	).set_trans(
+		Tween.TRANS_SINE
+	).set_ease(
+		Tween.EASE_IN_OUT
+	)
+
+	objective_preview_tween.finished.connect(
+		_on_objective_preview_finished
+	)
+
+
+func _on_objective_preview_finished() -> void:
+	objective_preview_camera.global_position = player.global_position
+	player.make_camera_current()
+	objective_preview_camera.enabled = false
 
 
 # =========================================================

@@ -41,6 +41,10 @@ load_path = "res://.godot/imported/emanuel.png-1c8cb535e6924c35312464ca3d711993.
 script = ExtResource("1_0xm2m")
 player_portrait = ExtResource("7_kek77")
 
+[node name="ObjectivePreviewCamera" type="Camera2D" parent="." unique_id=1790854036]
+offset = Vector2(0, -200)
+enabled = false
+
 [node name="World" type="Node2D" parent="." unique_id=1604863919]
 
 [node name="Floor" type="Polygon2D" parent="World" unique_id=1501008318]
@@ -76,7 +80,6 @@ pin_texture = ExtResource("7_incode")
 position = Vector2(-474, -1174)
 character_name = "Laura"
 world_sprite = ExtResource("9_d13ii")
-portrait = ExtResource("9_d13ii")
 dialogue_id = "laura_intro"
 default_line = "Oiiii"
 objective_order = 2
@@ -195,7 +198,6 @@ offset_right = 1047.0
 offset_bottom = 451.0
 mouse_filter = 2
 theme_override_font_sizes/normal_font_size = 31
-scroll_active = false
 theme_override_font_sizes/bold_font_size = 60
 bbcode_enabled = true
 scroll_active = false
@@ -240,7 +242,7 @@ offset_left = 276.0
 offset_top = 903.0
 offset_right = 769.0
 offset_bottom = 1029.0
-theme_override_font_sizes/normal_font_size = 40
+theme_override_font_sizes/normal_font_size = 30
 
 [node name="FeedbackText" type="Label" parent="UI/Questions/QuestionBox" unique_id=1442133807]
 layout_mode = 0
@@ -267,7 +269,7 @@ offset_right = -28.0
 offset_bottom = -8.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_font_sizes/font_size = 25
+theme_override_font_sizes/font_size = 27
 horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 3
@@ -291,7 +293,7 @@ offset_right = -28.0
 offset_bottom = -8.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_font_sizes/font_size = 25
+theme_override_font_sizes/font_size = 27
 horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 3
@@ -315,7 +317,7 @@ offset_right = -28.0
 offset_bottom = -8.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_font_sizes/font_size = 25
+theme_override_font_sizes/font_size = 27
 horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 3

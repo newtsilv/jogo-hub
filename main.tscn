@@ -52,7 +52,6 @@ pin_texture = ExtResource("7_074og")
 position = Vector2(-1095, 844)
 character_name = "Laura"
 world_sprite = ExtResource("9_d13ii")
-portrait = ExtResource("9_d13ii")
 dialogue_id = "laura_intro"
 default_line = "Oiiii"
 objective_order = 2

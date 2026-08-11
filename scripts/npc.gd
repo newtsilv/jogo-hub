@@ -266,6 +266,14 @@ func get_portrait_for_expression(expression_name: String) -> Texture2D:
 		return expression_value as Texture2D
 
 	var base_value: Variant = portrait_by_expression.get(
+		"feliz",
+		null
+	)
+
+	if base_value is Texture2D:
+		return base_value as Texture2D
+
+	base_value = portrait_by_expression.get(
 		"base",
 		null
 	)

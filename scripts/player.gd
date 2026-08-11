@@ -10,7 +10,7 @@ const SORT_Z_OFFSET := 2048
 
 
 @export_category("Movement")
-@export var movement_speed: float = 350.0
+@export var movement_speed: float = 450
 @export var stopping_distance: float = 10.0
 @export var stuck_time_limit: float = 0.9
 @export var minimum_progress_distance: float = 2.0
@@ -57,6 +57,7 @@ var arrow_direction: Vector2 = Vector2.UP
 
 @onready var visual: Node2D = $Visual
 @onready var body: Sprite2D = $Visual/Body
+@onready var camera: Camera2D = $Camera2D
 @onready var objective_arrow: Sprite2D = $ObjectiveArrow
 @onready var sort_point: Marker2D = $SortPoint
 
@@ -140,6 +141,10 @@ func point_objective_arrow_to(target_global_position: Vector2) -> void:
 
 func hide_objective_arrow() -> void:
 	objective_arrow.hide()
+
+
+func make_camera_current() -> void:
+	camera.make_current()
 
 
 func animate_objective_arrow(delta: float) -> void:
