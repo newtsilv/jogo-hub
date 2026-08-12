@@ -13,8 +13,16 @@ signal dialogue_finished
 @export var characters_per_second: float = 35.0
 
 
+@export_category("Fundos por tema")
+@export var default_background: Texture2D
+@export var incode_background: Texture2D
+@export var techx_background: Texture2D
+
+
 @onready var portrait: TextureRect = $Portrait
+@onready var textbox_background: TextureRect = $TextboxBackground
 @onready var character_name_label: Label = $CharacterName
+@onready var character_profession_label: Label = $CharacterProfession
 @onready var dialogue_text_label: RichTextLabel = $DialogText
 
 
@@ -93,19 +101,37 @@ func show_current_line() -> void:
 		"text",
 		""
 	)
+	var character_profession: String = line.get(
+		"profession",
+		""
+	)
 
 	var portrait_texture: Texture2D = line.get(
 		"portrait",
 		null
 	)
 
+	textbox_background.texture = get_background_for_speaker(speaker_name)
 	character_name_label.text = speaker_name
+	character_profession_label.text = character_profession
 	show_portrait(portrait_texture)
 
 	dialogue_text_label.text = dialogue_text
 	dialogue_text_label.visible_characters = 0
 
 	start_typing(dialogue_text)
+
+
+func get_background_for_speaker(speaker_name: String) -> Texture2D:
+	match speaker_name:
+		"Emanuel":
+			return incode_background if incode_background != null else default_background
+
+		"Laura":
+			return techx_background if techx_background != null else default_background
+
+		_:
+			return default_background
 
 
 func show_portrait(portrait_texture: Texture2D) -> void:

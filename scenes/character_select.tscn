@@ -59,7 +59,7 @@ text = "VOLTAR"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="GabrielButton" type="TextureButton" parent="." unique_id=1492365118]
+[node name="PedroButton" type="TextureButton" parent="." unique_id=1492365118]
 layout_mode = 0
 offset_left = 60.0
 offset_top = 420.0
@@ -69,7 +69,7 @@ texture_normal = ExtResource("3_uxcyu")
 ignore_texture_size = true
 stretch_mode = 5
 
-[node name="GabrielLabel" type="Label" parent="GabrielButton" unique_id=860183864]
+[node name="PedroLabel" type="Label" parent="PedroButton" unique_id=860183864]
 layout_mode = 0
 offset_top = 750.0
 offset_right = 460.0
@@ -78,11 +78,11 @@ theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 8
 theme_override_font_sizes/font_size = 56
-text = "GABRIEL"
+text = "PEDRO"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="LauraButton" type="TextureButton" parent="." unique_id=1843057812]
+[node name="MariaButton" type="TextureButton" parent="." unique_id=1843057812]
 layout_mode = 0
 offset_left = 560.0
 offset_top = 420.0
@@ -92,7 +92,7 @@ texture_normal = ExtResource("4_fa52j")
 ignore_texture_size = true
 stretch_mode = 5
 
-[node name="LauraLabel" type="Label" parent="LauraButton" unique_id=1452149261]
+[node name="MariaLabel" type="Label" parent="MariaButton" unique_id=1452149261]
 layout_mode = 0
 offset_top = 750.0
 offset_right = 460.0
@@ -101,7 +101,7 @@ theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 8
 theme_override_font_sizes/font_size = 56
-text = "LAURA"
+text = "MARIA"
 horizontal_alignment = 1
 vertical_alignment = 1
 

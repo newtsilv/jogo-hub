@@ -37,8 +37,8 @@ const SORT_Z_OFFSET := 2048
 
 
 @export_category("Personagem")
-@export var gabriel_texture: Texture2D
-@export var laura_texture: Texture2D
+@export var pedro_texture: Texture2D
+@export var maria_texture: Texture2D
 
 
 var target_position: Vector2
@@ -80,13 +80,13 @@ func apply_selected_character() -> void:
 		selected_character = int(game_state.get("selected_character"))
 
 	if selected_character == 1:
-		if laura_texture != null:
-			body.texture = laura_texture
+		if maria_texture != null:
+			body.texture = maria_texture
 
 		return
 
-	if gabriel_texture != null:
-		body.texture = gabriel_texture
+	if pedro_texture != null:
+		body.texture = pedro_texture
 
 
 func _physics_process(delta: float) -> void:

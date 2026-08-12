@@ -9,7 +9,8 @@ signal question_answered(
 
 enum QuestionTheme {
 	INCODE,
-	HUB
+	HUB,
+	TECHX
 }
 
 
@@ -49,6 +50,11 @@ enum QuestionTheme {
 
 # Imagem vermelha da opção errada
 @export var botao_errado: Texture2D
+
+
+@export_category("Tema TechX")
+@export var techXbox: Texture2D
+@export var techXbotao: Texture2D
 
 
 # =========================================================
@@ -206,7 +212,7 @@ func start_question(question: Dictionary) -> void:
 	correct_answer_index = clampi(
 		correct_answer_index,
 		0,
-		2
+		answer_buttons.size() - 1
 	)
 
 	var theme_id: int = int(
@@ -270,6 +276,12 @@ func apply_theme(theme_id: int) -> void:
 			background.texture = hubbox
 
 			current_normal_button_texture = botao
+			current_correct_button_texture = botao_correto
+			current_wrong_button_texture = botao_errado
+
+		QuestionTheme.TECHX:
+			background.texture = techXbox
+			current_normal_button_texture = techXbotao
 			current_correct_button_texture = botao_correto
 			current_wrong_button_texture = botao_errado
 

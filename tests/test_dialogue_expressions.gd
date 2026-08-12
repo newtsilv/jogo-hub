@@ -14,7 +14,7 @@ func _init() -> void:
 	var gabriel: NPC = main_scene.get_node("World/Entities/Gabriel")
 	var emanuel: NPC = main_scene.get_node("World/Entities/Emanuel")
 	var laura: NPC = main_scene.get_node("World/Entities/Laura")
-	var mb: NPC = main_scene.get_node("World/Entities/MB")
+	var mb: NPC = main_scene.get_node("World/Entities/MarcosBarros")
 
 	assert_texture_exists(
 		gabriel.get_portrait_for_expression("base"),
@@ -42,15 +42,25 @@ func _init() -> void:
 	)
 	assert_texture_exists(
 		mb.get_portrait_for_expression("base"),
-		"MB base expression should load."
+		"Marcos Barros base expression should load."
+	)
+	assert_equals(
+		mb.character_name,
+		"Marcos Barros",
+		"Final NPC should display the full Marcos Barros name."
+	)
+	assert_equals(
+		mb.expression_key,
+		"mb",
+		"Marcos Barros should load the existing MB expression files."
 	)
 	assert_texture_exists(
 		mb.get_portrait_for_expression("explicando"),
-		"MB explicando expression should load."
+		"Marcos Barros explicando expression should load."
 	)
 	assert_texture_exists(
 		mb.get_portrait_for_expression("controle"),
-		"MB controle expression should load."
+		"Marcos Barros controle expression should load."
 	)
 
 	var gabriel_conversation: Array[Dictionary] = (
@@ -71,11 +81,11 @@ func _init() -> void:
 		"base"
 	)
 	assert_line_expression(
-		gabriel_conversation[2],
+		gabriel_conversation[1],
 		"joinha"
 	)
 	assert_line_expression(
-		emanuel_conversation[2],
+		emanuel_conversation[1],
 		"aponta_cima"
 	)
 	assert_line_expression(
@@ -92,7 +102,7 @@ func _init() -> void:
 	)
 	assert_line_expression(
 		mb_conversation[2],
-		"controle"
+		"explicando"
 	)
 
 	main_scene.queue_free()
@@ -116,5 +126,16 @@ func assert_line_expression(line: Dictionary, expected_expression: String) -> vo
 	printerr(
 		"Expected expression %s, got %s in line %s."
 		% [expected_expression, actual_expression, line]
+	)
+	quit(1)
+
+
+func assert_equals(actual: Variant, expected: Variant, message: String) -> void:
+	if actual == expected:
+		return
+
+	printerr(
+		"%s Expected %s, got %s."
+		% [message, expected, actual]
 	)
 	quit(1)

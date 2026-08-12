@@ -2,17 +2,33 @@
 
 [ext_resource type="PackedScene" uid="uid://bgtjgeujinjtw" path="res://scenes/player.tscn" id="2_h2yge"]
 [ext_resource type="Texture2D" uid="uid://q8ierayvf20w" path="res://assets/sprites/cenario-chao.png" id="3_d13ii"]
+[ext_resource type="Script" uid="uid://dtioako5uvm7g" path="res://scripts/dialog_box.gd" id="4_1bvp3"]
 [ext_resource type="PackedScene" uid="uid://cd4dkennonej7" path="res://scenes/NPC.tscn" id="5_5vw27"]
 [ext_resource type="PackedScene" uid="uid://biar43v5mbpbi" path="res://mesa.tscn" id="6_1u8w0"]
 [ext_resource type="Texture2D" uid="uid://4dxsdrgapbb0" path="res://assets/sprites/pin.png" id="7_074og"]
+[ext_resource type="Texture2D" uid="uid://cmuwmu4xh4hvc" path="res://assets/sprites/crachá-homem.png" id="7_badgepedro"]
+[ext_resource type="Texture2D" uid="uid://4gp5spsiogr3" path="res://assets/sprites/crachá-mulher.png" id="7_badgemaria"]
 [ext_resource type="Texture2D" uid="uid://ju5m54dgunw5" path="res://assets/sprites/emanuel.png" id="7_ryguw"]
 [ext_resource type="Texture2D" uid="uid://dqkrbogi5rfhh" path="res://assets/sprites/dialogo.png" id="9_4c57u"]
+[ext_resource type="Texture2D" uid="uid://d0gtbsttrpjod" path="res://assets/sprites/dialog incode.png" id="9_dialogincode"]
+[ext_resource type="Texture2D" uid="uid://ylfo1lpimyqp" path="res://assets/sprites/dialog techx.png" id="9_dialogtechx"]
 [ext_resource type="Texture2D" uid="uid://c3nriwxek2fxs" path="res://assets/sprites/laura.png" id="9_d13ii"]
 [ext_resource type="Texture2D" uid="uid://cbcfqcnlvb4oy" path="res://assets/sprites/gabriel.png" id="10_1u8w0"]
+[ext_resource type="Texture2D" uid="uid://djq0i38mf7sof" path="res://assets/sprites/mensagem incode.png" id="11_msgincode"]
+[ext_resource type="Texture2D" uid="uid://21icumyfcsft" path="res://assets/sprites/Mensagem Oxy.png" id="11_msgoxy"]
+[ext_resource type="Texture2D" uid="uid://6rao51a1gmsu" path="res://assets/sprites/mensagem techx (1).png" id="13_msgtechx"]
+[ext_resource type="Script" uid="uid://bx6r3ecg7l7su" path="res://scripts/reward_box.gd" id="15_2cqfq"]
 [ext_resource type="Texture2D" uid="uid://4ln5f8bjuuo4" path="res://assets/sprites/luz.png" id="17_cegan"]
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_ryguw"]
 load_path = "res://.godot/imported/emanuel.png-1c8cb535e6924c35312464ca3d711993.ctex"
+
+[sub_resource type="Shader" id="Shader_focus_blur"]
+code = "shader_type canvas_item;\n\nuniform sampler2D screen_texture : hint_screen_texture, repeat_disable, filter_nearest_mipmap;\nuniform float blur_lod = 2.0;\n\nvoid fragment() {\n\tvec4 blurred = textureLod(screen_texture, SCREEN_UV, blur_lod);\n\tCOLOR = blurred * COLOR;\n}\n"
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_focus_blur"]
+shader = SubResource("Shader_focus_blur")
+shader_parameter/blur_lod = 2.0
 
 [node name="Main" type="Node2D" unique_id=603405120]
 
@@ -97,6 +113,17 @@ position = Vector2(-490, 703)
 
 [node name="UI" type="CanvasLayer" parent="." unique_id=475629542]
 
+[node name="BackgroundFocusOverlay" type="ColorRect" parent="UI" unique_id=314873628]
+visible = false
+material = SubResource("ShaderMaterial_focus_blur")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0, 0, 0, 0.22)
+
 [node name="HUD" type="Node2D" parent="UI" unique_id=271365660]
 position = Vector2(-3, -2)
 
@@ -116,6 +143,10 @@ offset_right = -18.0
 offset_bottom = 1332.0
 grow_horizontal = 2
 grow_vertical = 0
+script = ExtResource("4_1bvp3")
+default_background = ExtResource("9_4c57u")
+incode_background = ExtResource("9_dialogincode")
+techx_background = ExtResource("9_dialogtechx")
 
 [node name="Portrait" type="TextureRect" parent="UI/Dialog/DialogueBox" unique_id=1482608626]
 layout_mode = 0
@@ -150,6 +181,15 @@ offset_right = 409.0
 offset_bottom = 257.0
 theme_override_colors/font_color = Color(0.21176471, 0.019607844, 0.5176471, 1)
 theme_override_font_sizes/font_size = 45
+
+[node name="CharacterProfession" type="Label" parent="UI/Dialog/DialogueBox" unique_id=2091515215]
+layout_mode = 0
+offset_left = 102.0
+offset_top = 243.0
+offset_right = 520.0
+offset_bottom = 287.0
+theme_override_colors/font_color = Color(0.34, 0.24, 0.55, 1)
+theme_override_font_sizes/font_size = 28
 
 [node name="DialogText" type="RichTextLabel" parent="UI/Dialog/DialogueBox" unique_id=849023003]
 layout_mode = 0
@@ -273,9 +313,26 @@ vertical_alignment = 1
 
 [node name="RewardBox" type="Control" parent="UI/Reward" unique_id=1392410111]
 layout_mode = 3
-anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("15_2cqfq")
+
+[node name="MessageImage" type="TextureRect" parent="UI/Reward/RewardBox" unique_id=1048543840]
+custom_minimum_size = Vector2(1080, 1920)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = 1080.0
+offset_bottom = 1920.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+expand_mode = 1
+stretch_mode = 5
 
 [node name="Background" type="TextureRect" parent="UI/Reward/RewardBox" unique_id=1822028281]
 visible = false
@@ -289,11 +346,10 @@ texture = ExtResource("17_cegan")
 
 [node name="PinImage" type="TextureRect" parent="UI/Reward/RewardBox" unique_id=1185926178]
 layout_mode = 0
-offset_left = 359.0
-offset_top = 899.0
-offset_right = 943.90564
-offset_bottom = 1492.3826
-scale = Vector2(0.53, 0.53)
+offset_left = 456.0
+offset_top = 1026.0
+offset_right = 624.0
+offset_bottom = 1194.0
 expand_mode = 1
 stretch_mode = 3
 

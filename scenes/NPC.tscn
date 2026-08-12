@@ -5,7 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://dawffchmy1xho" path="res://assets/sprites/seta.png" id="3_vpu2o"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_t62y5"]
-size = Vector2(238, 332)
+size = Vector2(482, 565)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_mhefn"]
 size = Vector2(55, 26)
@@ -19,7 +19,7 @@ scale = Vector2(0.235, 0.235)
 texture = ExtResource("2_ktgr7")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1391666103]
-position = Vector2(-4, 20)
+position = Vector2(-3, 47.5)
 shape = SubResource("RectangleShape2D_t62y5")
 
 [node name="InteractionPoint" type="Marker2D" parent="." unique_id=1509839915]

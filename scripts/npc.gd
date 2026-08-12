@@ -11,6 +11,7 @@ const EXPRESSION_DIRECTORY := "res://assets/sprites/expressions"
 
 @export_category("Personagem")
 @export var character_name: String = "Personagem"
+@export var expression_key: String = ""
 @export var world_sprite: Texture2D
 @export var portrait: Texture2D
 
@@ -225,6 +226,10 @@ func get_default_dialogue() -> Array[Dictionary]:
 
 func load_expression_portraits() -> void:
 	portrait_by_expression.clear()
+	var portrait_name: String = character_name.to_lower()
+
+	if not expression_key.strip_edges().is_empty():
+		portrait_name = expression_key.strip_edges().to_lower()
 
 	for expression_name: String in [
 		"base",
@@ -240,7 +245,7 @@ func load_expression_portraits() -> void:
 			"%s/%s_%s.png"
 			% [
 				EXPRESSION_DIRECTORY,
-				character_name.to_lower(),
+				portrait_name,
 				expression_name
 			]
 		)
