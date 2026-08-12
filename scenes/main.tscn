@@ -22,9 +22,46 @@
 [ext_resource type="Texture2D" uid="uid://bdjkd142m8g8o" path="res://assets/sprites/botaovermelho.png" id="15_getpj"]
 [ext_resource type="Script" uid="uid://cvi6p7rtwfrf6" path="res://scripts/game_over_box.gd" id="16_yaehf"]
 [ext_resource type="Texture2D" uid="uid://4ln5f8bjuuo4" path="res://assets/sprites/luz.png" id="17_cegan"]
+[ext_resource type="Script" uid="uid://c5cq5gmb5n3qp" path="res://scripts/pause_menu.gd" id="20_pause"]
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_ryguw"]
 load_path = "res://.godot/imported/emanuel.png-1c8cb535e6924c35312464ca3d711993.ctex"
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_pause_normal"]
+bg_color = Color(0.16862746, 0.32156864, 0.6627451, 1)
+corner_radius_top_left = 90
+corner_radius_top_right = 90
+corner_radius_bottom_right = 90
+corner_radius_bottom_left = 90
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+border_color = Color(0.10980392, 0.03137255, 0.28627452, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_pause_hover"]
+bg_color = Color(0.22745098, 0.4, 0.78039217, 1)
+corner_radius_top_left = 90
+corner_radius_top_right = 90
+corner_radius_bottom_right = 90
+corner_radius_bottom_left = 90
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+border_color = Color(0.10980392, 0.03137255, 0.28627452, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_pause_pressed"]
+bg_color = Color(0.11764706, 0.23137255, 0.4862745, 1)
+corner_radius_top_left = 90
+corner_radius_top_right = 90
+corner_radius_bottom_right = 90
+corner_radius_bottom_left = 90
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+border_color = Color(0.10980392, 0.03137255, 0.28627452, 1)
 
 [node name="Main" type="Node2D" unique_id=603405120]
 script = ExtResource("1_0xm2m")
@@ -113,6 +150,32 @@ position = Vector2(-490, 703)
 
 [node name="HUD" type="Node2D" parent="UI" unique_id=271365660]
 position = Vector2(-3, -2)
+
+[node name="PauseButton" type="TextureButton" parent="UI/HUD" unique_id=167536964]
+offset_left = 30.0
+offset_top = 30.0
+offset_right = 260.0
+offset_bottom = 190.0
+texture_normal = ExtResource("14_2cqfq")
+ignore_texture_size = true
+stretch_mode = 5
+
+[node name="PauseButtonLabel" type="Label" parent="UI/HUD/PauseButton" unique_id=1805953575]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 3.0
+offset_top = -11.0
+offset_right = 3.0
+offset_bottom = -11.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 55
+text = "||"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="Dialog" type="Node2D" parent="UI" unique_id=1252569314]
 position = Vector2(-1, 6)
@@ -345,3 +408,114 @@ offset_bottom = 40.0
 layout_mode = 0
 offset_right = 40.0
 offset_bottom = 23.0
+
+[node name="Pause" type="Node2D" parent="UI" unique_id=207353913]
+
+[node name="PauseMenu" type="Control" parent="UI/Pause" unique_id=270104582]
+process_mode = 3
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("20_pause")
+
+[node name="Background" type="ColorRect" parent="UI/Pause/PauseMenu" unique_id=463808026]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.65)
+
+[node name="Box" type="ColorRect" parent="UI/Pause/PauseMenu" unique_id=262124761]
+layout_mode = 0
+offset_left = 140.0
+offset_top = 560.0
+offset_right = 940.0
+offset_bottom = 1440.0
+mouse_filter = 2
+color = Color(0.10980392, 0.03137255, 0.28627452, 0.95)
+
+[node name="TitleLabel" type="Label" parent="UI/Pause/PauseMenu" unique_id=473570154]
+layout_mode = 0
+offset_left = 140.0
+offset_top = 610.0
+offset_right = 940.0
+offset_bottom = 710.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 70
+text = "PAUSADO"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ResumeButton" type="TextureButton" parent="UI/Pause/PauseMenu" unique_id=248240066]
+layout_mode = 0
+offset_left = 190.0
+offset_top = 790.0
+offset_right = 890.0
+offset_bottom = 965.0
+texture_normal = ExtResource("14_82xsv")
+ignore_texture_size = true
+stretch_mode = 5
+
+[node name="ResumeLabel" type="Label" parent="UI/Pause/PauseMenu/ResumeButton" unique_id=1273274301]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 45
+text = "CONTINUAR"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="RestartButton" type="TextureButton" parent="UI/Pause/PauseMenu" unique_id=1873494738]
+layout_mode = 0
+offset_left = 190.0
+offset_top = 1005.0
+offset_right = 890.0
+offset_bottom = 1180.0
+texture_normal = ExtResource("14_2cqfq")
+ignore_texture_size = true
+stretch_mode = 5
+
+[node name="RestartLabel" type="Label" parent="UI/Pause/PauseMenu/RestartButton" unique_id=558825073]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 45
+text = "REINICIAR"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="MainMenuButton" type="TextureButton" parent="UI/Pause/PauseMenu" unique_id=1467846147]
+layout_mode = 0
+offset_left = 190.0
+offset_top = 1220.0
+offset_right = 890.0
+offset_bottom = 1395.0
+texture_normal = ExtResource("15_getpj")
+ignore_texture_size = true
+stretch_mode = 5
+
+[node name="MainMenuLabel" type="Label" parent="UI/Pause/PauseMenu/MainMenuButton" unique_id=1705046432]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 40
+text = "VOLTAR AO INÍCIO"
+horizontal_alignment = 1
+vertical_alignment = 1
