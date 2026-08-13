@@ -10,6 +10,12 @@ extends Node2D
 @export var player_portrait: Texture2D
 
 
+@export_category("Navegação")
+@export_file("*.tscn") var main_menu_scene_path: String = (
+	"res://scenes/main_menu.tscn"
+)
+
+
 var target_npc: NPC = null
 var nearby_npc: NPC = null
 
@@ -48,8 +54,16 @@ var collected_pins: Array[String] = []
 	$UI/GameOver/GameOverBox
 )
 
+@onready var pause_menu: PauseMenu = (
+	$UI/Pause/PauseMenu
+)
+
 @onready var interaction_hint: Label = (
 	$UI/InteractionHint
+)
+
+@onready var pause_button: TextureButton = (
+	$UI/HUD/PauseButton
 )
 
 
@@ -59,6 +73,7 @@ func _ready() -> void:
 	question_box.hide()
 	reward_box.hide()
 	game_over_box.hide()
+	pause_menu.hide()
 
 	dialogue_box.dialogue_finished.connect(
 		_on_dialogue_finished
@@ -74,6 +89,18 @@ func _ready() -> void:
 
 	game_over_box.restart_requested.connect(
 		_on_restart_requested
+	)
+
+	pause_menu.restart_requested.connect(
+		_on_restart_requested
+	)
+
+	pause_menu.main_menu_requested.connect(
+		_on_pause_main_menu_requested
+	)
+
+	pause_button.pressed.connect(
+		_on_pause_button_pressed
 	)
 
 	connect_npcs()
@@ -539,6 +566,14 @@ func _on_reward_closed() -> void:
 
 func _on_restart_requested() -> void:
 	get_tree().reload_current_scene()
+
+
+func _on_pause_main_menu_requested() -> void:
+	get_tree().change_scene_to_file(main_menu_scene_path)
+
+
+func _on_pause_button_pressed() -> void:
+	pause_menu.open_pause_menu()
 
 
 # =========================================================
