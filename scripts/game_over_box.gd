@@ -20,9 +20,9 @@ func show_game_over() -> void:
 	input_enabled = false
 
 	game_over_text.text = (
-		"GAME OVER\n\n"
-		+ "Resposta incorreta!\n\n"
-		+ "Toque na tela para tentar novamente."
+		"Quase!\n\n"
+		+ "Lembre-se do que aprendeu durante a jornada.\n\n"
+		+ "Tente novamente. Tenho certeza de que você consegue!"
 	)
 
 	show()

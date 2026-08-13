@@ -12,18 +12,18 @@ extends Control
 )
 
 
-@onready var gabriel_button: TextureButton = $GabrielButton
-@onready var laura_button: TextureButton = $LauraButton
+@onready var pedro_button: TextureButton = $PedroButton
+@onready var maria_button: TextureButton = $MariaButton
 @onready var back_button: TextureButton = $BackButton
 
 
 func _ready() -> void:
-	gabriel_button.pressed.connect(
-		_on_character_selected.bind(GameState.Character.GABRIEL)
+	pedro_button.pressed.connect(
+		_on_character_selected.bind(GameState.Character.PEDRO)
 	)
 
-	laura_button.pressed.connect(
-		_on_character_selected.bind(GameState.Character.LAURA)
+	maria_button.pressed.connect(
+		_on_character_selected.bind(GameState.Character.MARIA)
 	)
 
 	back_button.pressed.connect(_on_back_pressed)

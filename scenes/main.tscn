@@ -2,27 +2,57 @@
 
 [ext_resource type="Script" uid="uid://uctmdbh3ltso" path="res://scripts/main.gd" id="1_0xm2m"]
 [ext_resource type="PackedScene" uid="uid://bgtjgeujinjtw" path="res://scenes/player.tscn" id="2_h2yge"]
-[ext_resource type="Texture2D" uid="uid://q8ierayvf20w" path="res://assets/sprites/cenario-chao.png" id="3_d13ii"]
+[ext_resource type="Texture2D" uid="uid://hrwy56dhg471" path="res://assets/sprites/cenario-jogo.png" id="3_jscy8"]
 [ext_resource type="Script" uid="uid://dtioako5uvm7g" path="res://scripts/dialog_box.gd" id="4_1bvp3"]
 [ext_resource type="PackedScene" uid="uid://cd4dkennonej7" path="res://scenes/NPC.tscn" id="5_5vw27"]
 [ext_resource type="PackedScene" uid="uid://c3yhmorq3ir61" path="res://scenes/mesa.tscn" id="6_1u8w0"]
-[ext_resource type="Texture2D" uid="uid://4dxsdrgapbb0" path="res://assets/sprites/pin.png" id="7_074og"]
+[ext_resource type="Texture2D" uid="uid://4gp5spsiogr3" path="res://assets/sprites/crachá-mulher.png" id="7_badgemaria"]
+[ext_resource type="Texture2D" uid="uid://cmuwmu4xh4hvc" path="res://assets/sprites/crachá-homem.png" id="7_badgepedro"]
+[ext_resource type="Texture2D" uid="uid://bhcb0fwl5gre6" path="res://assets/sprites/pin oxygeni.png" id="7_hub"]
+[ext_resource type="Texture2D" uid="uid://djssb2nmcbapd" path="res://assets/sprites/pin incode.png" id="7_incode"]
 [ext_resource type="Texture2D" uid="uid://dih88nuuitxtf" path="res://assets/sprites/manel.png" id="7_kek77"]
 [ext_resource type="Texture2D" uid="uid://ju5m54dgunw5" path="res://assets/sprites/emanuel.png" id="7_ryguw"]
+[ext_resource type="Texture2D" uid="uid://d2cjdolroucdi" path="res://assets/sprites/PinTechX.png" id="7_techx"]
+[ext_resource type="Texture2D" uid="uid://c36l7ojikt6yl" path="res://assets/sprites/mb.png" id="8_mb"]
 [ext_resource type="Texture2D" uid="uid://dqkrbogi5rfhh" path="res://assets/sprites/dialogo.png" id="9_4c57u"]
 [ext_resource type="Texture2D" uid="uid://c3nriwxek2fxs" path="res://assets/sprites/laura.png" id="9_d13ii"]
+[ext_resource type="Texture2D" uid="uid://d0gtbsttrpjod" path="res://assets/sprites/dialog incode.png" id="9_dialogincode"]
+[ext_resource type="Texture2D" uid="uid://ylfo1lpimyqp" path="res://assets/sprites/dialog techx.png" id="9_dialogtechx"]
 [ext_resource type="Texture2D" uid="uid://cbcfqcnlvb4oy" path="res://assets/sprites/gabriel.png" id="10_1u8w0"]
 [ext_resource type="Script" uid="uid://bkt3c2l1xtqs5" path="res://scripts/question_box.gd" id="10_4c57u"]
 [ext_resource type="Texture2D" uid="uid://b8gm2ri5d1qmk" path="res://assets/sprites/hubbox.png" id="11_efxa6"]
+[ext_resource type="Texture2D" uid="uid://djq0i38mf7sof" path="res://assets/sprites/mensagem incode.png" id="11_msgincode"]
+[ext_resource type="Texture2D" uid="uid://21icumyfcsft" path="res://assets/sprites/Mensagem Oxy.png" id="11_msgoxy"]
 [ext_resource type="Texture2D" uid="uid://dcy4nchjlvg5i" path="res://assets/sprites/incodebox.png" id="11_w48qg"]
+[ext_resource type="PackedScene" uid="uid://df5rws21tglx8" path="res://scenes/bancada.tscn" id="11_y6deb"]
+[ext_resource type="PackedScene" uid="uid://duq6bpf770qtn" path="res://scenes/sofa_central.tscn" id="12_og1vs"]
+[ext_resource type="Texture2D" uid="uid://c616xvvs8g3ve" path="res://assets/sprites/techXbox.png" id="12_techxbox"]
 [ext_resource type="Texture2D" uid="uid://bh3fa3ospe8r8" path="res://assets/sprites/botaoincode.png" id="12_vivmo"]
+[ext_resource type="PackedScene" uid="uid://dxc4nsjmyrucr" path="res://scenes/pallet.tscn" id="13_2wyq8"]
+[ext_resource type="Texture2D" uid="uid://6rao51a1gmsu" path="res://assets/sprites/mensagem techx (1).png" id="13_msgtechx"]
+[ext_resource type="Texture2D" uid="uid://c8vpxtsnofh86" path="res://assets/sprites/techXbotao.png" id="13_techxbutton"]
 [ext_resource type="Texture2D" uid="uid://cxfrfrq1txidv" path="res://assets/sprites/botao.png" id="14_2cqfq"]
 [ext_resource type="Texture2D" uid="uid://i2iyy16qecc1" path="res://assets/sprites/botaoverde.png" id="14_82xsv"]
+[ext_resource type="PackedScene" uid="uid://dmjd4qmh2ubl6" path="res://scenes/sofa_de_traz.tscn" id="14_vxglm"]
 [ext_resource type="Script" uid="uid://bx6r3ecg7l7su" path="res://scripts/reward_box.gd" id="15_2cqfq"]
+[ext_resource type="PackedScene" uid="uid://cnrfrv6nggx5h" path="res://scenes/armario_e_pia.tscn" id="15_2f3dj"]
 [ext_resource type="Texture2D" uid="uid://bdjkd142m8g8o" path="res://assets/sprites/botaovermelho.png" id="15_getpj"]
 [ext_resource type="Script" uid="uid://cvi6p7rtwfrf6" path="res://scripts/game_over_box.gd" id="16_yaehf"]
 [ext_resource type="Texture2D" uid="uid://4ln5f8bjuuo4" path="res://assets/sprites/luz.png" id="17_cegan"]
 [ext_resource type="Script" uid="uid://c5cq5gmb5n3qp" path="res://scripts/pause_menu.gd" id="20_pause"]
+[ext_resource type="PackedScene" uid="uid://djy2jcuwyg617" path="res://scenes/mesa_lado.tscn" id="23_pm3ni"]
+[ext_resource type="PackedScene" uid="uid://5akc80teick4" path="res://scenes/mesa_unica.tscn" id="29_yq6so"]
+[ext_resource type="PackedScene" uid="uid://cjpectbw87rjj" path="res://scenes/mesa_redonda.tscn" id="31_tel4y"]
+[ext_resource type="Script" uid="uid://dfdd8bkmoi6cc" path="res://scripts/pastel_background.gd" id="32_pastel"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_vhohb"]
+size = Vector2(84.75, 3086)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_trkts"]
+size = Vector2(6038, 197)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_5ksrq"]
+size = Vector2(4593, 460)
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_ryguw"]
 load_path = "res://.godot/imported/emanuel.png-1c8cb535e6924c35312464ca3d711993.ctex"
@@ -63,93 +93,196 @@ border_width_right = 5
 border_width_bottom = 5
 border_color = Color(0.10980392, 0.03137255, 0.28627452, 1)
 
+[sub_resource type="Shader" id="Shader_focus_blur"]
+code = "shader_type canvas_item;
+
+uniform sampler2D screen_texture : hint_screen_texture, repeat_disable, filter_nearest_mipmap;
+uniform float blur_lod = 2.0;
+
+void fragment() {
+	vec4 blurred = textureLod(screen_texture, SCREEN_UV, blur_lod);
+	COLOR = blurred * COLOR;
+}
+"
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_focus_blur"]
+shader = SubResource("Shader_focus_blur")
+shader_parameter/blur_lod = 2.0
+
 [node name="Main" type="Node2D" unique_id=603405120]
 script = ExtResource("1_0xm2m")
 player_portrait = ExtResource("7_kek77")
+incode_reward_message = ExtResource("11_msgincode")
+techx_reward_message = ExtResource("13_msgtechx")
+oxygeni_reward_message = ExtResource("11_msgoxy")
+pedro_badge = ExtResource("7_badgepedro")
+maria_badge = ExtResource("7_badgemaria")
+
+[node name="ObjectivePreviewCamera" type="Camera2D" parent="." unique_id=1790854036]
+offset = Vector2(0, -200)
+enabled = false
 
 [node name="World" type="Node2D" parent="." unique_id=1604863919]
 
-[node name="Floor" type="Polygon2D" parent="World" unique_id=1501008318]
-z_index = -10
-position = Vector2(1.4121337, 0)
-scale = Vector2(1.4707112, 1.4707114)
-color = Color(0.49148542, 0.4759413, 0.46510363, 1)
-polygon = PackedVector2Array(1, 1, 736, 0, 726.57904, 1323.8492, -9.799432, 1323.8492)
+[node name="PastelBackground" type="Node2D" parent="World" unique_id=367585681]
+z_index = -40
+script = ExtResource("32_pastel")
+
+[node name="BaseWash" type="Polygon2D" parent="World/PastelBackground" unique_id=121932115]
+color = Color(0.85490197, 0.77254903, 0.96862745, 1)
+polygon = PackedVector2Array(-5200, -2600, 3600, -2600, 3600, 3200, -5200, 3200)
 
 [node name="Sprite2D" type="Sprite2D" parent="World" unique_id=412978740]
-position = Vector2(-1955, -15.000004)
-scale = Vector2(0.43108547, 0.43410558)
-texture = ExtResource("3_d13ii")
+position = Vector2(-756, -133)
+scale = Vector2(0.76428974, 0.76964426)
+texture = ExtResource("3_jscy8")
 
 [node name="Objects" type="Node2D" parent="World" unique_id=60916716]
 position = Vector2(80, 160)
+
+[node name="parede" type="StaticBody2D" parent="World/Objects" unique_id=1917332635]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="World/Objects/parede" unique_id=1381291098]
+position = Vector2(2344.625, -233)
+shape = SubResource("RectangleShape2D_vhohb")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="World/Objects/parede" unique_id=75936829]
+position = Vector2(682, -1358)
+shape = SubResource("RectangleShape2D_vhohb")
+
+[node name="parede3" type="StaticBody2D" parent="World/Objects" unique_id=767707829]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="World/Objects/parede3" unique_id=1637902102]
+position = Vector2(-3841, -413)
+shape = SubResource("RectangleShape2D_vhohb")
+
+[node name="parede2" type="StaticBody2D" parent="World/Objects" unique_id=1499758790]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="World/Objects/parede2" unique_id=1312598779]
+position = Vector2(-716, -1635.5)
+shape = SubResource("RectangleShape2D_trkts")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="World/Objects" unique_id=1068869234]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="World/Objects/StaticBody2D" unique_id=551192932]
+position = Vector2(-1632.5, 1026)
+shape = SubResource("RectangleShape2D_5ksrq")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="World/Objects/StaticBody2D" unique_id=1614463656]
+position = Vector2(1477, 1427)
+shape = SubResource("RectangleShape2D_5ksrq")
 
 [node name="Entities" type="Node2D" parent="World" unique_id=1192308277]
 y_sort_enabled = true
 
 [node name="Emanuel" parent="World/Entities" unique_id=1905267183 instance=ExtResource("5_5vw27")]
-position = Vector2(-590, 192)
+position = Vector2(1320, -1328)
 character_name = "Emanuel"
 world_sprite = SubResource("CompressedTexture2D_ryguw")
 portrait = ExtResource("7_ryguw")
 dialogue_id = "emanuel_intro"
 default_line = "sou emanuel"
 objective_order = 1
-pin_name = "Inc"
-pin_texture = ExtResource("7_074og")
+pin_name = "Incode"
+pin_texture = ExtResource("7_incode")
 
 [node name="Laura" parent="World/Entities" unique_id=408815405 instance=ExtResource("5_5vw27")]
-position = Vector2(-1095, 844)
+position = Vector2(-474, -1174)
 character_name = "Laura"
 world_sprite = ExtResource("9_d13ii")
-portrait = ExtResource("9_d13ii")
 dialogue_id = "laura_intro"
 default_line = "Oiiii"
 objective_order = 2
-pin_name = "hub"
-pin_texture = ExtResource("7_074og")
+pin_name = "TechX"
+pin_texture = ExtResource("7_techx")
+
+[node name="MarcosBarros" parent="World/Entities" unique_id=73136225 instance=ExtResource("5_5vw27")]
+position = Vector2(-2878, 589)
+character_name = "Marcos Barros"
+expression_key = "mb"
+world_sprite = ExtResource("8_mb")
+portrait = ExtResource("8_mb")
+dialogue_id = "mb_intro"
+default_line = "Bora jogar?"
+objective_order = 3
+pin_name = "Hub"
+pin_texture = ExtResource("7_hub")
+
+[node name="bancada" parent="World/Entities" unique_id=284954422 instance=ExtResource("11_y6deb")]
+position = Vector2(1650, 760)
 
 [node name="Gabriel" parent="World/Entities" unique_id=1335867149 instance=ExtResource("5_5vw27")]
-position = Vector2(693, 217)
+position = Vector2(1764, 493)
 character_name = "Gabriel"
 world_sprite = ExtResource("10_1u8w0")
 portrait = ExtResource("10_1u8w0")
 dialogue_id = "gabriel_intro"
 default_line = "Opa, Gabriel sou eu"
-pin_name = "Inc"
-pin_texture = ExtResource("7_074og")
 
 [node name="Player" parent="World/Entities" unique_id=2060779848 instance=ExtResource("2_h2yge")]
-position = Vector2(649, 1107)
-
-[node name="Mesa1" parent="World/Entities" unique_id=2130827776 instance=ExtResource("6_1u8w0")]
-position = Vector2(-485, -55)
+position = Vector2(1715, 1139)
+objective_arrow_distance = 230.0
 
 [node name="Mesa" parent="World/Entities" unique_id=2062572470 instance=ExtResource("6_1u8w0")]
-position = Vector2(150, -55)
+position = Vector2(-166, -237)
 
 [node name="Mesa4" parent="World/Entities" unique_id=1470522798 instance=ExtResource("6_1u8w0")]
-position = Vector2(-2025, -61)
-
-[node name="Mesa5" parent="World/Entities" unique_id=2047893868 instance=ExtResource("6_1u8w0")]
-position = Vector2(-1390, -61)
+position = Vector2(-1269, -237)
 
 [node name="Mesa6" parent="World/Entities" unique_id=1928731331 instance=ExtResource("6_1u8w0")]
-position = Vector2(-3660, -55)
+position = Vector2(-2618, -204)
 
-[node name="Mesa7" parent="World/Entities" unique_id=376846923 instance=ExtResource("6_1u8w0")]
-position = Vector2(-3025, -55)
+[node name="sofa_central" parent="World/Entities" unique_id=299411518 instance=ExtResource("12_og1vs")]
+position = Vector2(1623, -590)
 
-[node name="Mesa2" parent="World/Entities" unique_id=971756487 instance=ExtResource("6_1u8w0")]
-position = Vector2(144, 703)
+[node name="bancada2" parent="World/Entities" unique_id=1927825020 instance=ExtResource("13_2wyq8")]
+position = Vector2(1628, 380)
 
-[node name="Mesa3" parent="World/Entities" unique_id=1269872503 instance=ExtResource("6_1u8w0")]
-position = Vector2(-490, 703)
+[node name="sofa_de_lado" parent="World/Entities" unique_id=719954886 instance=ExtResource("14_vxglm")]
+position = Vector2(612, -619)
+
+[node name="sofa_central2" parent="World/Entities" unique_id=478335762 instance=ExtResource("15_2f3dj")]
+position = Vector2(912, -663)
 
 [node name="UI" type="CanvasLayer" parent="." unique_id=475629542]
 
-[node name="HUD" type="Node2D" parent="UI" unique_id=271365660]
-position = Vector2(-3, -2)
+[node name="BackgroundFocusOverlay" type="ColorRect" parent="UI" unique_id=314873628]
+visible = false
+material = SubResource("ShaderMaterial_focus_blur")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0, 0, 0, 0.22)
+
+[node name="HUD" type="HBoxContainer" parent="UI" unique_id=271365660]
+custom_minimum_size = Vector2(116, 32)
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -1051.0
+offset_top = 21.0
+offset_right = -707.0
+offset_bottom = 125.0
+grow_horizontal = 0
+theme_override_constants/separation = 10
+
+[node name="PinHudSlot1" type="TextureRect" parent="UI/HUD" unique_id=936850147]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+expand_mode = 2
+
+[node name="PinHudSlot2" type="TextureRect" parent="UI/HUD" unique_id=1219328960]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+expand_mode = 2
+
+[node name="PinHudSlot3" type="TextureRect" parent="UI/HUD" unique_id=1105179094]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+expand_mode = 2
 
 [node name="PauseButton" type="TextureButton" parent="UI/HUD" unique_id=167536964]
 offset_left = 30.0
@@ -194,16 +327,19 @@ offset_bottom = 1332.0
 grow_horizontal = 2
 grow_vertical = 0
 script = ExtResource("4_1bvp3")
+default_background = ExtResource("9_4c57u")
+incode_background = ExtResource("9_dialogincode")
+techx_background = ExtResource("9_dialogtechx")
 
 [node name="Portrait" type="TextureRect" parent="UI/Dialog/DialogueBox" unique_id=1482608626]
 layout_mode = 0
-offset_left = 86.0
-offset_top = -300.0
-offset_right = 506.0
-offset_bottom = 413.0
+offset_left = 79.0
+offset_top = -374.0
+offset_right = 499.0
+offset_bottom = 339.0
 mouse_filter = 2
 expand_mode = 1
-stretch_mode = 5
+stretch_mode = 3
 
 [node name="TextboxBackground" type="TextureRect" parent="UI/Dialog/DialogueBox" unique_id=1312907964]
 layout_mode = 1
@@ -228,6 +364,16 @@ offset_right = 409.0
 offset_bottom = 257.0
 theme_override_colors/font_color = Color(0.21176471, 0.019607844, 0.5176471, 1)
 theme_override_font_sizes/font_size = 45
+
+[node name="CharacterProfession" type="Label" parent="UI/Dialog/DialogueBox" unique_id=2091515215]
+layout_mode = 0
+offset_left = 102.0
+offset_top = 123.0
+offset_right = 357.0
+offset_bottom = 167.0
+scale = Vector2(1.185, 1.185)
+theme_override_colors/font_color = Color(7.0600886, 5.228935, 10.792825, 1)
+theme_override_font_sizes/font_size = 28
 
 [node name="DialogText" type="RichTextLabel" parent="UI/Dialog/DialogueBox" unique_id=849023003]
 layout_mode = 0
@@ -256,6 +402,8 @@ layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_top = -200.0
+offset_bottom = -200.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("10_4c57u")
@@ -267,21 +415,24 @@ hubbox = ExtResource("11_efxa6")
 botao = ExtResource("14_2cqfq")
 botao_correto = ExtResource("14_82xsv")
 botao_errado = ExtResource("15_getpj")
+techXbox = ExtResource("12_techxbox")
+techXbotao = ExtResource("13_techxbutton")
 
 [node name="Background" type="TextureRect" parent="UI/Questions/QuestionBox" unique_id=746771348]
 layout_mode = 0
-offset_left = 156.0
+offset_left = 140.0
 offset_top = 802.0
-offset_right = 906.0
+offset_right = 890.0
 offset_bottom = 1709.0
 
 [node name="QuestionText" type="RichTextLabel" parent="UI/Questions/QuestionBox" unique_id=1186589137]
 layout_mode = 0
-offset_left = 276.0
-offset_top = 903.0
-offset_right = 769.0
-offset_bottom = 1029.0
-theme_override_font_sizes/normal_font_size = 40
+offset_left = 276.465
+offset_top = 950.0
+offset_right = 769.46497
+offset_bottom = 1075.9999
+theme_override_font_sizes/normal_font_size = 34
+theme_override_font_sizes/bold_font_size = 34
 
 [node name="FeedbackText" type="Label" parent="UI/Questions/QuestionBox" unique_id=1442133807]
 layout_mode = 0
@@ -299,18 +450,20 @@ offset_bottom = 1254.0
 
 [node name="AnswerLabel" type="Label" parent="UI/Questions/QuestionBox/Answer1" unique_id=602535195]
 layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.24800001
-anchor_top = 0.42600003
-anchor_right = 0.24800001
-anchor_bottom = 0.42600003
-offset_left = -101.46399
-offset_top = -26.954002
-offset_right = 101.53601
-offset_bottom = 28.045998
-theme_override_font_sizes/font_size = 40
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 28.0
+offset_top = 8.0
+offset_right = -28.0
+offset_bottom = -8.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 27
 horizontal_alignment = 1
 vertical_alignment = 1
+autowrap_mode = 3
+clip_text = true
 
 [node name="Answer2" type="TextureButton" parent="UI/Questions/QuestionBox" unique_id=2035920990]
 layout_mode = 0
@@ -321,18 +474,20 @@ offset_bottom = 1414.0
 
 [node name="AnswerLabel" type="Label" parent="UI/Questions/QuestionBox/Answer2" unique_id=1518355440]
 layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.24800001
-anchor_top = 0.42600003
-anchor_right = 0.24800001
-anchor_bottom = 0.42600003
-offset_left = -101.46399
-offset_top = -26.954002
-offset_right = 101.53601
-offset_bottom = 28.045998
-theme_override_font_sizes/font_size = 40
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 28.0
+offset_top = 8.0
+offset_right = -28.0
+offset_bottom = -8.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 27
 horizontal_alignment = 1
 vertical_alignment = 1
+autowrap_mode = 3
+clip_text = true
 
 [node name="Answer3" type="TextureButton" parent="UI/Questions/QuestionBox" unique_id=279320410]
 layout_mode = 0
@@ -343,27 +498,53 @@ offset_bottom = 1572.0
 
 [node name="AnswerLabel" type="Label" parent="UI/Questions/QuestionBox/Answer3" unique_id=1310617681]
 layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.32700002
-anchor_top = 0.47300002
-anchor_right = 0.32700002
-anchor_bottom = 0.47300002
-offset_left = -136.386
-offset_top = -29.017002
-offset_right = 136.61398
-offset_bottom = 28.982998
-theme_override_font_sizes/font_size = 40
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 28.0
+offset_top = 8.0
+offset_right = -28.0
+offset_bottom = -8.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 27
 horizontal_alignment = 1
 vertical_alignment = 1
+autowrap_mode = 3
+clip_text = true
 
 [node name="Reward" type="Node2D" parent="UI" unique_id=841631662]
 
 [node name="RewardBox" type="Control" parent="UI/Reward" unique_id=1392410111]
 layout_mode = 3
-anchors_preset = 0
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 40.0
+offset_top = -200.0
 offset_right = 40.0
-offset_bottom = 40.0
+offset_bottom = -200.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.925, 0.925)
 script = ExtResource("15_2cqfq")
+
+[node name="MessageImage" type="TextureRect" parent="UI/Reward/RewardBox" unique_id=1048543840]
+custom_minimum_size = Vector2(1080, 1920)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 40.0
+offset_top = -100.0
+offset_right = 1120.0
+offset_bottom = 1820.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.925, 0.925)
+mouse_filter = 2
+expand_mode = 1
+stretch_mode = 5
 
 [node name="Background" type="TextureRect" parent="UI/Reward/RewardBox" unique_id=1822028281]
 visible = false
@@ -377,18 +558,23 @@ texture = ExtResource("17_cegan")
 
 [node name="PinImage" type="TextureRect" parent="UI/Reward/RewardBox" unique_id=1185926178]
 layout_mode = 0
-offset_left = 396.0
-offset_top = 864.0
-offset_right = 980.90564
-offset_bottom = 1457.3826
-scale = Vector2(0.53, 0.53)
+offset_left = 456.0
+offset_top = 1026.0
+offset_right = 624.0
+offset_bottom = 1194.0
 expand_mode = 1
 stretch_mode = 3
 
 [node name="RewardText" type="Label" parent="UI/Reward/RewardBox" unique_id=1813463685]
 layout_mode = 0
-offset_right = 40.0
-offset_bottom = 23.0
+offset_left = 120.0
+offset_top = 500.0
+offset_right = 960.0
+offset_bottom = 700.0
+theme_override_font_sizes/font_size = 44
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
 
 [node name="GameOver" type="Node2D" parent="UI" unique_id=827580298]
 
@@ -519,3 +705,30 @@ theme_override_font_sizes/font_size = 40
 text = "VOLTAR AO INÍCIO"
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="MesaLado" parent="." unique_id=820799469 instance=ExtResource("23_pm3ni")]
+position = Vector2(75, -950)
+
+[node name="MesaLado2" parent="." unique_id=2122251370 instance=ExtResource("23_pm3ni")]
+position = Vector2(-779, -942)
+
+[node name="MesaLado3" parent="." unique_id=368278338 instance=ExtResource("23_pm3ni")]
+position = Vector2(-1628, -944)
+
+[node name="MesaLado4" parent="." unique_id=1762977875 instance=ExtResource("23_pm3ni")]
+position = Vector2(-2500, -957)
+
+[node name="Node2D" parent="." unique_id=2130827776 instance=ExtResource("29_yq6so")]
+position = Vector2(-3299, -1126)
+
+[node name="Node2D2" parent="." unique_id=1382754054 instance=ExtResource("29_yq6so")]
+position = Vector2(-3299, 554)
+
+[node name="Node2D3" parent="." unique_id=1024527815 instance=ExtResource("31_tel4y")]
+position = Vector2(-2481, 664)
+
+[node name="Node2D4" parent="." unique_id=1530532155 instance=ExtResource("31_tel4y")]
+position = Vector2(-1863, 495)
+
+[node name="Node2D5" parent="." unique_id=2034241583 instance=ExtResource("31_tel4y")]
+position = Vector2(-1291, 683)

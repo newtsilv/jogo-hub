@@ -6,17 +6,17 @@ extends Node
 
 
 enum Character {
-	GABRIEL,
-	LAURA
+	PEDRO,
+	MARIA
 }
 
 
-var selected_character: Character = Character.GABRIEL
+var selected_character: Character = Character.PEDRO
 
 
-func select_gabriel() -> void:
-	selected_character = Character.GABRIEL
+func select_pedro() -> void:
+	selected_character = Character.PEDRO
 
 
-func select_laura() -> void:
-	selected_character = Character.LAURA
+func select_maria() -> void:
+	selected_character = Character.MARIA

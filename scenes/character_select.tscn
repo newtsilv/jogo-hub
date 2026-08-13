@@ -1,9 +1,9 @@
-[gd_scene format=3]
+[gd_scene format=3 uid="uid://cvwwfpscw0ilx"]
 
-[ext_resource type="Script" path="res://scripts/character_select.gd" id="1_select"]
-[ext_resource type="Texture2D" uid="uid://cbcfqcnlvb4oy" path="res://assets/sprites/gabriel.png" id="2_gabriel"]
-[ext_resource type="Texture2D" uid="uid://c3nriwxek2fxs" path="res://assets/sprites/laura.png" id="3_laura"]
+[ext_resource type="Script" uid="uid://mayctbfqlv6l" path="res://scripts/character_select.gd" id="1_select"]
+[ext_resource type="Texture2D" uid="uid://bhcrajufs1tse" path="res://assets/sprites/prota homem.png" id="3_uxcyu"]
 [ext_resource type="Texture2D" uid="uid://cxfrfrq1txidv" path="res://assets/sprites/botao.png" id="4_back"]
+[ext_resource type="Texture2D" uid="uid://rhmlax77q42j" path="res://assets/sprites/prota mulher.png" id="4_fa52j"]
 
 [node name="CharacterSelect" type="Control" unique_id=1963366136]
 layout_mode = 3
@@ -53,60 +53,55 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-mouse_filter = 2
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_font_sizes/font_size = 32
 text = "VOLTAR"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="GabrielButton" type="TextureButton" parent="." unique_id=1492365118]
+[node name="PedroButton" type="TextureButton" parent="." unique_id=1492365118]
 layout_mode = 0
 offset_left = 60.0
 offset_top = 420.0
 offset_right = 520.0
 offset_bottom = 1260.0
-texture_normal = ExtResource("2_gabriel")
+texture_normal = ExtResource("3_uxcyu")
 ignore_texture_size = true
 stretch_mode = 5
 
-[node name="GabrielLabel" type="Label" parent="GabrielButton" unique_id=860183864]
+[node name="PedroLabel" type="Label" parent="PedroButton" unique_id=860183864]
 layout_mode = 0
-offset_left = 0.0
 offset_top = 750.0
 offset_right = 460.0
 offset_bottom = 830.0
-mouse_filter = 2
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 8
 theme_override_font_sizes/font_size = 56
-text = "GABRIEL"
+text = "PEDRO"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="LauraButton" type="TextureButton" parent="." unique_id=1843057812]
+[node name="MariaButton" type="TextureButton" parent="." unique_id=1843057812]
 layout_mode = 0
 offset_left = 560.0
 offset_top = 420.0
 offset_right = 1020.0
 offset_bottom = 1260.0
-texture_normal = ExtResource("3_laura")
+texture_normal = ExtResource("4_fa52j")
 ignore_texture_size = true
 stretch_mode = 5
 
-[node name="LauraLabel" type="Label" parent="LauraButton" unique_id=1452149261]
+[node name="MariaLabel" type="Label" parent="MariaButton" unique_id=1452149261]
 layout_mode = 0
-offset_left = 0.0
 offset_top = 750.0
 offset_right = 460.0
 offset_bottom = 830.0
-mouse_filter = 2
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 8
 theme_override_font_sizes/font_size = 56
-text = "LAURA"
+text = "MARIA"
 horizontal_alignment = 1
 vertical_alignment = 1
 
