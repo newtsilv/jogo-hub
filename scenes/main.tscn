@@ -40,6 +40,7 @@
 [ext_resource type="Script" uid="uid://cvi6p7rtwfrf6" path="res://scripts/game_over_box.gd" id="16_yaehf"]
 [ext_resource type="Texture2D" uid="uid://4ln5f8bjuuo4" path="res://assets/sprites/luz.png" id="17_cegan"]
 [ext_resource type="Script" uid="uid://c5cq5gmb5n3qp" path="res://scripts/pause_menu.gd" id="20_pause"]
+[ext_resource type="Texture2D" path="res://assets/sprites/game_over_fundo.png" id="40_go_bg"]
 [ext_resource type="PackedScene" uid="uid://djy2jcuwyg617" path="res://scenes/mesa_lado.tscn" id="23_pm3ni"]
 [ext_resource type="PackedScene" uid="uid://5akc80teick4" path="res://scenes/mesa_unica.tscn" id="29_yq6so"]
 [ext_resource type="PackedScene" uid="uid://cjpectbw87rjj" path="res://scenes/mesa_redonda.tscn" id="31_tel4y"]
@@ -580,20 +581,24 @@ autowrap_mode = 3
 
 [node name="GameOverBox" type="Control" parent="UI/GameOver" unique_id=72894295]
 layout_mode = 3
-anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
+offset_right = 1080.0
+offset_bottom = 1920.0
 script = ExtResource("16_yaehf")
 
 [node name="Background" type="TextureRect" parent="UI/GameOver/GameOverBox" unique_id=1087653380]
 layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0
+offset_right = 1080.0
+offset_bottom = 1920.0
+mouse_filter = 2
+texture = ExtResource("40_go_bg")
 
-[node name="GameOverText" type="Label" parent="UI/GameOver/GameOverBox" unique_id=556489625]
+[node name="PlayAgainButton" type="Button" parent="UI/GameOver/GameOverBox" unique_id=1087653386]
+modulate = Color(1, 1, 1, 0)
 layout_mode = 0
-offset_right = 40.0
-offset_bottom = 23.0
+offset_left = 258.0
+offset_top = 900.0
+offset_right = 821.0
+offset_bottom = 1029.0
 
 [node name="Pause" type="Node2D" parent="UI" unique_id=207353913]
 

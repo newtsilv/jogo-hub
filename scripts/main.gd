@@ -26,7 +26,7 @@ const PIN_HUD_REVEAL_SCALE := Vector2(0.8, 0.8)
 
 @export_category("Navegação")
 @export_file("*.tscn") var main_menu_scene_path: String = (
-	"res://scenes/main_menu.tscn"
+	"res://scenes/cena1.tscn"
 )
 
 
@@ -965,7 +965,7 @@ func _on_reward_closed() -> void:
 	if pending_final_badge:
 		pending_final_badge = false
 		get_tree().change_scene_to_file(
-			"res://scenes/main_menu.tscn"
+			"res://scenes/cena1.tscn"
 		)
 		return
 

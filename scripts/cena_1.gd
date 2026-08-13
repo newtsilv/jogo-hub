@@ -34,7 +34,7 @@ func _animar_chegada_dos_personagens() -> void:
 
 #start
 func _on_start_pressed() -> void:
-	get_tree().change_scene_to_file("res://scenes/cena2.tscn")
+	SceneTransition.change_scene("res://scenes/cena2.tscn")
 
 #Quit
 func _on_quit_pressed() -> void:

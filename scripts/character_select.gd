@@ -8,7 +8,7 @@ extends Control
 )
 
 @export_file("*.tscn") var menu_scene_path: String = (
-	"res://scenes/main_menu.tscn"
+	"res://scenes/cena7.tscn"
 )
 
 
@@ -33,7 +33,7 @@ func _on_character_selected(
 	character: GameState.Character
 ) -> void:
 	GameState.selected_character = character
-	get_tree().change_scene_to_file(game_scene_path)
+	SceneTransition.change_scene(game_scene_path)
 
 
 func _on_back_pressed() -> void:
