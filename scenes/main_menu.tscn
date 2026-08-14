@@ -1,4 +1,4 @@
-[gd_scene format=3 uid="uid://dh8jimpvrsjr6"]
+[gd_scene format=3]
 
 [ext_resource type="Script" path="res://scripts/main_menu.gd" id="1_menu"]
 [ext_resource type="Texture2D" uid="uid://4ln5f8bjuuo4" path="res://assets/sprites/luz.png" id="2_luz"]
@@ -24,12 +24,12 @@ grow_vertical = 2
 color = Color(0.10980392, 0.03137255, 0.28627452, 1)
 
 [node name="Glow" type="TextureRect" parent="." unique_id=213868798]
-modulate = Color(1, 1, 1, 0.35)
 layout_mode = 0
 offset_left = 140.0
 offset_top = 260.0
 offset_right = 940.0
 offset_bottom = 1060.0
+modulate = Color(1, 1, 1, 0.35)
 mouse_filter = 2
 texture = ExtResource("2_luz")
 expand_mode = 1
@@ -76,6 +76,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_font_sizes/font_size = 50
 text = "JOGAR"
@@ -99,6 +100,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_font_sizes/font_size = 50
 text = "SAIR"

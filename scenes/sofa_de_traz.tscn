@@ -1,7 +1,7 @@
-[gd_scene format=3 uid="uid://bnxlc1vc8xcvi"]
+[gd_scene format=3 uid="uid://dmjd4qmh2ubl6"]
 
 [ext_resource type="Script" uid="uid://c54k7ejefbpbf" path="res://scripts/sortable_object.gd" id="1_n0px1"]
-[ext_resource type="Texture2D" path="res://assets/sprites/moveis/armario e pia.png" id="2_n0px1"]
+[ext_resource type="Texture2D" uid="uid://d28hhdkqnkum2" path="res://assets/sprites/moveis/armario e pia.png" id="2_n0px1"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_vhohb"]
 size = Vector2(198, 1630)

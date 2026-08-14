@@ -1,0 +1,26 @@
+[gd_scene format=3 uid="uid://duq6bpf770qtn"]
+
+[ext_resource type="Texture2D" uid="uid://brlr3qi2lscbv" path="res://assets/sprites/moveis/sofa central.png" id="1_c11jc"]
+[ext_resource type="Script" uid="uid://c54k7ejefbpbf" path="res://scripts/sortable_object.gd" id="2_sort"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_vhohb"]
+size = Vector2(377, 587)
+
+[node name="sofa_central" type="Node2D" unique_id=299411518]
+script = ExtResource("2_sort")
+
+[node name="Area2D" type="Area2D" parent="." unique_id=1350752646]
+
+[node name="SortPoint" type="Marker2D" parent="Area2D" unique_id=2072618404]
+position = Vector2(0, 265)
+
+[node name="Sprite2D" type="Sprite2D" parent="Area2D" unique_id=1879430509]
+position = Vector2(1.0000153, 1.0000076)
+scale = Vector2(0.2848268, 0.2848268)
+texture = ExtResource("1_c11jc")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Area2D" unique_id=417310919]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D/StaticBody2D" unique_id=1872378990]
+position = Vector2(1.5, -28.5)
+shape = SubResource("RectangleShape2D_vhohb")

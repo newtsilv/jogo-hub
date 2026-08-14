@@ -1,29 +1,40 @@
 [gd_scene format=3 uid="uid://bgtjgeujinjtw"]
 
 [ext_resource type="Script" uid="uid://dgwn0j577b7ix" path="res://scripts/player.gd" id="1_3vyb7"]
-[ext_resource type="Texture2D" uid="uid://cbcfqcnlvb4oy" path="res://assets/sprites/gabriel.png" id="2_g2els"]
+[ext_resource type="Texture2D" uid="uid://bhcrajufs1tse" path="res://assets/sprites/prota homem.png" id="2_pedro"]
+[ext_resource type="Texture2D" uid="uid://rhmlax77q42j" path="res://assets/sprites/prota mulher.png" id="3_maria"]
+[ext_resource type="Texture2D" uid="uid://dawffchmy1xho" path="res://assets/sprites/seta.png" id="4_arrow"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_vhohb"]
-size = Vector2(139, 147)
+size = Vector2(139, 122)
 
 [node name="Player" type="CharacterBody2D" unique_id=2060779848]
 position = Vector2(11, 18)
 script = ExtResource("1_3vyb7")
+objective_arrow_distance = 180.0
+pedro_texture = ExtResource("2_pedro")
+maria_texture = ExtResource("3_maria")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=977548699]
-position = Vector2(-2.5, 89.5)
+position = Vector2(-2.5, 102)
 shape = SubResource("RectangleShape2D_vhohb")
 
 [node name="Visual" type="Node2D" parent="." unique_id=1950474866]
 
 [node name="Body" type="Sprite2D" parent="Visual" unique_id=1189355560]
-position = Vector2(-1, 2)
+position = Vector2(-1.0000019, 30.999985)
 scale = Vector2(0.3, 0.3)
-texture = ExtResource("2_g2els")
+texture = ExtResource("2_pedro")
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=392996911]
 offset = Vector2(0, -200)
 position_smoothing_enabled = true
+
+[node name="ObjectiveArrow" type="Sprite2D" parent="." unique_id=751150190]
+visible = false
+position = Vector2(0, -180)
+scale = Vector2(0.28, 0.28)
+texture = ExtResource("4_arrow")
 
 [node name="SortPoint" type="Marker2D" parent="." unique_id=544824281]
 position = Vector2(-4, 163)

@@ -1,10 +1,10 @@
 [gd_scene format=3 uid="uid://c3yhmorq3ir61"]
 
 [ext_resource type="Script" uid="uid://c54k7ejefbpbf" path="res://scripts/sortable_object.gd" id="1_0f5q7"]
-[ext_resource type="Texture2D" uid="uid://cxmgcpgo6vxla" path="res://assets/sprites/mesa esquerda.png" id="1_0rx7m"]
+[ext_resource type="Texture2D" uid="uid://bppbhxj8pnsyw" path="res://assets/sprites/mesa.png" id="2_sx2gp"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_vhohb"]
-size = Vector2(1321.5735, 653.50195)
+size = Vector2(1739.8982, 705.5324)
 
 [node name="Node2D" type="Node2D" unique_id=2130827776]
 script = ExtResource("1_0f5q7")
@@ -15,13 +15,13 @@ script = ExtResource("1_0f5q7")
 position = Vector2(0, 174)
 
 [node name="Sprite2D" type="Sprite2D" parent="Area2D" unique_id=3280901]
-position = Vector2(5, 2.000061)
-scale = Vector2(0.48048782, 0.4804878)
-texture = ExtResource("1_0rx7m")
+position = Vector2(-15.543217, 45.99003)
+scale = Vector2(0.31101912, 0.29906607)
+texture = ExtResource("2_sx2gp")
 
 [node name="StaticBody2D" type="StaticBody2D" parent="Area2D" unique_id=410283567]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D/StaticBody2D" unique_id=351245629]
-position = Vector2(5.499963, 18.000006)
+position = Vector2(-12.999998, 34.499992)
 scale = Vector2(0.48048782, 0.48048818)
 shape = SubResource("RectangleShape2D_vhohb")

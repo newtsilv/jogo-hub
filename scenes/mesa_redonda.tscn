@@ -1,7 +1,7 @@
-[gd_scene format=3 uid="uid://dmb4duh3aooxy"]
+[gd_scene format=3 uid="uid://cjpectbw87rjj"]
 
 [ext_resource type="Script" uid="uid://c54k7ejefbpbf" path="res://scripts/sortable_object.gd" id="1_hd03o"]
-[ext_resource type="Texture2D" path="res://assets/sprites/moveis/mesa redonda.png" id="2_hd03o"]
+[ext_resource type="Texture2D" uid="uid://myrrgt13iihd" path="res://assets/sprites/moveis/mesa redonda.png" id="2_hd03o"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_0t180"]
 radius = 35.380707

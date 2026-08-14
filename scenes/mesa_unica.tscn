@@ -1,7 +1,7 @@
-[gd_scene format=3 uid="uid://u3pfme0bfkho"]
+[gd_scene format=3 uid="uid://5akc80teick4"]
 
 [ext_resource type="Script" uid="uid://c54k7ejefbpbf" path="res://scripts/sortable_object.gd" id="1_d33js"]
-[ext_resource type="Texture2D" path="res://assets/sprites/mesa de lado.png" id="2_d33js"]
+[ext_resource type="Texture2D" uid="uid://d1mk3kklqvy6m" path="res://assets/sprites/mesa de lado.png" id="2_d33js"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_vhohb"]
 size = Vector2(397.51263, 1246.6487)

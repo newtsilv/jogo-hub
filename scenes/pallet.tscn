@@ -1,6 +1,6 @@
-[gd_scene format=3 uid="uid://bh6s0ty7d7jkl"]
+[gd_scene format=3 uid="uid://dxc4nsjmyrucr"]
 
-[ext_resource type="Texture2D" path="res://assets/sprites/moveis/palet.png" id="1_nd3el"]
+[ext_resource type="Texture2D" uid="uid://ragcoui0qpd" path="res://assets/sprites/moveis/palet.png" id="1_nd3el"]
 [ext_resource type="Script" uid="uid://c54k7ejefbpbf" path="res://scripts/sortable_object.gd" id="2_sort"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_vhohb"]

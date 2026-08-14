@@ -6,9 +6,12 @@ signal reward_closed
 
 @export_category("Animação")
 @export var opening_duration: float = 0.3
-@export var pin_start_scale: float = 0.4
 
 
+const REWARD_MESSAGE_SIZE := Vector2(1080, 1920)
+
+
+@onready var message_image: TextureRect = $MessageImage
 @onready var pin_image: TextureRect = $PinImage
 @onready var reward_text: Label = $RewardText
 
@@ -20,33 +23,29 @@ var current_tween: Tween
 
 
 func _ready() -> void:
+	pin_image.hide()
+	reward_text.hide()
 	hide()
 
 
 func show_reward(
-	pin_texture: Texture2D,
+	message_texture: Texture2D,
 	pin_name: String
 ) -> void:
 	reward_is_open = true
 	input_enabled = false
 
-	pin_image.texture = pin_texture
-
-	reward_text.text = (
-		"Parabéns!\n"
-		+ "Você ganhou o pin %s!\n\n"
-		+ "Toque na tela para continuar."
-	) % pin_name
+	message_image.custom_minimum_size = REWARD_MESSAGE_SIZE
+	message_image.size = REWARD_MESSAGE_SIZE
+	message_image.texture = message_texture
+	message_image.show()
+	pin_image.hide()
+	reward_text.hide()
 
 	show()
 
 	modulate.a = 0.0
-
-	pin_image.pivot_offset = (
-		pin_image.size / 2.0
-	)
-
-	pin_image.scale = Vector2.ONE * pin_start_scale
+	message_image.modulate.a = 0.0
 
 	if current_tween != null:
 		current_tween.kill()
@@ -62,14 +61,10 @@ func show_reward(
 	)
 
 	current_tween.tween_property(
-		pin_image,
-		"scale",
-		Vector2.ONE,
+		message_image,
+		"modulate:a",
+		1.0,
 		opening_duration
-	).set_trans(
-		Tween.TRANS_BACK
-	).set_ease(
-		Tween.EASE_OUT
 	)
 
 	await current_tween.finished

@@ -1,6 +1,6 @@
-[gd_scene format=3 uid="uid://cxtm7xhn6lxh4"]
+[gd_scene format=3 uid="uid://djy2jcuwyg617"]
 
-[ext_resource type="Texture2D" path="res://assets/sprites/mesa_lado.png" id="1_xw4do"]
+[ext_resource type="Texture2D" uid="uid://5hbr7lnj7k5w" path="res://assets/sprites/mesa_lado.png" id="1_xw4do"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_q0q34"]
 size = Vector2(600, 577)
