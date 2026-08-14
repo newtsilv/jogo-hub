@@ -24,6 +24,12 @@ const PIN_HUD_REVEAL_SCALE := Vector2(0.8, 0.8)
 @export var objective_preview_travel_duration: float = 2.6
 @export var objective_preview_hold_duration: float = 0.45
 
+@export_category("Navegação")
+@export_file("*.tscn") var main_menu_scene_path: String = (
+	"res://scenes/cena1.tscn"
+)
+
+
 var target_npc: NPC = null
 var nearby_npc: NPC = null
 
@@ -40,6 +46,8 @@ var pending_objective_preview_npc: NPC = null
 var pending_game_over_dialogue: bool = false
 var pending_blocked_order_dialogue: bool = false
 var pending_final_badge: bool = false
+# Impede o jogador de se mover enquanto a câmera de objetivo está
+# fazendo o passeio até o próximo NPC.
 var objective_preview_is_active: bool = false
 
 var npc_by_name: Dictionary = {}
@@ -75,8 +83,16 @@ var touch_follow_screen_position: Vector2 = Vector2.ZERO
 	$UI/GameOver/GameOverBox
 )
 
+@onready var pause_menu: PauseMenu = (
+	$UI/Pause/PauseMenu
+)
+
 @onready var interaction_hint: Label = (
 	$UI/InteractionHint
+)
+
+@onready var pause_button: TextureButton = (
+	$UI/PauseButton
 )
 
 @onready var background_focus_overlay: ColorRect = (
@@ -89,13 +105,13 @@ var touch_follow_screen_position: Vector2 = Vector2.ZERO
 	$UI/HUD/PinHudSlot3
 ]
 
-
 func _ready() -> void:
 	interaction_hint.hide()
 	dialogue_box.hide()
 	question_box.hide()
 	reward_box.hide()
 	game_over_box.hide()
+	pause_menu.hide()
 	background_focus_overlay.hide()
 
 	dialogue_box.dialogue_finished.connect(
@@ -112,6 +128,18 @@ func _ready() -> void:
 
 	game_over_box.restart_requested.connect(
 		_on_restart_requested
+	)
+
+	pause_menu.restart_requested.connect(
+		_on_restart_requested
+	)
+
+	pause_menu.main_menu_requested.connect(
+		_on_pause_main_menu_requested
+	)
+
+	pause_button.pressed.connect(
+		_on_pause_button_pressed
 	)
 
 	connect_npcs()
@@ -955,7 +983,7 @@ func _on_reward_closed() -> void:
 	if pending_final_badge:
 		pending_final_badge = false
 		get_tree().change_scene_to_file(
-			"res://scenes/main_menu.tscn"
+			"res://scenes/cena1.tscn"
 		)
 		return
 
@@ -1023,6 +1051,14 @@ func _on_restart_requested() -> void:
 	get_tree().change_scene_to_file(
 		"res://scenes/main_menu.tscn"
 	)
+
+
+func _on_pause_main_menu_requested() -> void:
+	get_tree().change_scene_to_file(main_menu_scene_path)
+
+
+func _on_pause_button_pressed() -> void:
+	pause_menu.open_pause_menu()
 
 
 # =========================================================

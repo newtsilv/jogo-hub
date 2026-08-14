@@ -1,7 +1,9 @@
 [gd_scene format=3 uid="uid://cpu5sgxilhdp7"]
 
-[ext_resource type="Texture2D" uid="uid://beu78h78pp445" path="res://assets/Figma/Cena_01.png" id="1_20dcs"]
+[ext_resource type="Texture2D" path="res://assets/sprites/cena1_fundo.png" id="1_20dcs"]
 [ext_resource type="Script" uid="uid://bqlkghplx8sm0" path="res://scripts/cena_1.gd" id="1_85hpt"]
+[ext_resource type="Texture2D" path="res://assets/sprites/cena1_personagem_esquerda.png" id="2_esq"]
+[ext_resource type="Texture2D" path="res://assets/sprites/cena1_personagem_direita.png" id="3_dir"]
 
 [node name="Control" type="Control" unique_id=1491609987]
 layout_mode = 3
@@ -14,9 +16,30 @@ script = ExtResource("1_85hpt")
 
 [node name="TextureRect" type="TextureRect" parent="." unique_id=1570201481]
 layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 texture = ExtResource("1_20dcs")
+
+[node name="PersonagemEsquerda" type="TextureRect" parent="." unique_id=1653481001]
+layout_mode = 0
+offset_left = 39.0
+offset_top = 1353.0
+offset_right = 399.0
+offset_bottom = 1890.0
+mouse_filter = 2
+texture = ExtResource("2_esq")
+
+[node name="PersonagemDireita" type="TextureRect" parent="." unique_id=1653481002]
+layout_mode = 0
+offset_left = 595.0
+offset_top = 1384.0
+offset_right = 1010.0
+offset_bottom = 1920.0
+mouse_filter = 2
+texture = ExtResource("3_dir")
 
 [node name="Start" type="Button" parent="TextureRect" unique_id=1606826396]
 modulate = Color(1, 1, 1, 0)

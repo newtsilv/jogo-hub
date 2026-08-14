@@ -18,6 +18,7 @@ config/icon="res://assets/sprites/pin oxygeni.png"
 [autoload]
 
 GameState="*res://scripts/game_state.gd"
+SceneTransition="*res://scripts/scene_transition.gd"
 
 [display]
 
