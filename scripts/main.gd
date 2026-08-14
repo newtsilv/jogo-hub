@@ -91,7 +91,7 @@ var objective_preview_tween: Tween
 )
 
 @onready var pause_button: TextureButton = (
-	$UI/HUD/PauseButton
+	$UI/PauseButton
 )
 
 @onready var background_focus_overlay: ColorRect = (
