@@ -1,0 +1,29 @@
+[gd_scene format=3 uid="uid://bjds4iqs36mqf"]
+
+[ext_resource type="Script" uid="uid://yn0pcq3pfle" path="res://scripts/cena_4.gd" id="1_e6k1r"]
+[ext_resource type="Texture2D" uid="uid://brcrdt3741c5h" path="res://assets/Figma/Cena_04.png" id="1_r3tk5"]
+
+[node name="Control" type="Control" unique_id=1915611891]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_e6k1r")
+
+[node name="TextureRect" type="TextureRect" parent="." unique_id=1029088188]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("1_r3tk5")
+
+[node name="Skip" type="Button" parent="." unique_id=982359402]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 0
+offset_left = 6.0
+offset_top = -11.0
+offset_right = 1084.0
+offset_bottom = 1922.0
+
+[connection signal="pressed" from="Skip" to="." method="_on_skip_pressed"]
