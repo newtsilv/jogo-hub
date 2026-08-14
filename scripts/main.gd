@@ -40,12 +40,15 @@ var pending_objective_preview_npc: NPC = null
 var pending_game_over_dialogue: bool = false
 var pending_blocked_order_dialogue: bool = false
 var pending_final_badge: bool = false
+var objective_preview_is_active: bool = false
 
 var npc_by_name: Dictionary = {}
 
 var collected_pins: Array[String] = []
 var completed_npcs: Array[NPC] = []
 var objective_preview_tween: Tween
+var touch_follow_is_active: bool = false
+var touch_follow_screen_position: Vector2 = Vector2.ZERO
 
 @onready var entities: Node2D = $World/Entities
 @onready var world: Node2D = $World
@@ -123,6 +126,7 @@ func _ready() -> void:
 func _process(_delta: float) -> void:
 	update_npc_proximity()
 	update_objective_arrow()
+	update_touch_follow_destination()
 
 
 # =========================================================
@@ -130,34 +134,81 @@ func _process(_delta: float) -> void:
 # =========================================================
 
 func _unhandled_input(event: InputEvent) -> void:
-	if interface_is_open():
+	if input_is_blocked():
+		touch_follow_is_active = false
 		return
 
 	var world_position: Vector2 = Vector2.ZERO
-	var was_pressed: bool = false
+	var should_move: bool = false
+	var should_show_indicator: bool = false
 
 	if event is InputEventScreenTouch:
 		if event.pressed:
+			touch_follow_screen_position = event.position
 			world_position = screen_to_world(
-				event.position
+				touch_follow_screen_position
 			)
 
-			was_pressed = true
+			touch_follow_is_active = true
+			should_move = true
+			should_show_indicator = true
+		else:
+			touch_follow_is_active = false
+
+	elif event is InputEventScreenDrag:
+		if touch_follow_is_active:
+			touch_follow_screen_position = event.position
+			world_position = screen_to_world(
+				touch_follow_screen_position
+			)
+
+			should_move = true
 
 	elif event is InputEventMouseButton:
 		if (
 			event.button_index == MOUSE_BUTTON_LEFT
 			and event.pressed
 		):
+			touch_follow_screen_position = event.position
 			world_position = get_global_mouse_position()
-			was_pressed = true
+			touch_follow_is_active = true
+			should_move = true
+			should_show_indicator = true
+		elif event.button_index == MOUSE_BUTTON_LEFT:
+			touch_follow_is_active = false
 
-	if not was_pressed:
+	elif event is InputEventMouseMotion:
+		if touch_follow_is_active:
+			touch_follow_screen_position = event.position
+			world_position = get_global_mouse_position()
+			should_move = true
+
+	if not should_move:
 		return
 
 	clear_current_interaction()
-	show_click_indicator(world_position)
-	player.move_to(world_position)
+
+	if should_show_indicator:
+		show_click_indicator(world_position)
+
+	move_player_foot_to(world_position)
+
+
+func move_player_foot_to(world_position: Vector2) -> void:
+	player.move_to(world_position - player.get_foot_offset())
+
+
+func update_touch_follow_destination() -> void:
+	if not touch_follow_is_active:
+		return
+
+	if input_is_blocked():
+		touch_follow_is_active = false
+		return
+
+	move_player_foot_to(
+		screen_to_world(touch_follow_screen_position)
+	)
 
 
 func show_click_indicator(world_position: Vector2) -> void:
@@ -181,13 +232,23 @@ func screen_to_world(
 func interface_is_open() -> bool:
 	return (
 		dialogue_box.dialogue_is_open
+		or dialogue_box.dialogue_is_closing
 		or question_box.question_is_open
+		or question_box.question_is_closing
 		or reward_box.reward_is_open
 		or game_over_box.game_over_is_open
 	)
 
 
+func input_is_blocked() -> bool:
+	return (
+		interface_is_open()
+		or objective_preview_is_active
+	)
+
+
 func show_focus_overlay() -> void:
+	player.stop_movement()
 	background_focus_overlay.show()
 	background_focus_overlay.modulate.a = 0.0
 
@@ -273,7 +334,7 @@ func _on_npc_selected(npc: NPC) -> void:
 	if not npc.interaction_enabled:
 		return
 
-	if interface_is_open():
+	if input_is_blocked():
 		return
 
 	var distance_to_npc: float = (
@@ -369,38 +430,18 @@ func get_npc_conversation(
 				),
 				make_dialogue_line(
 					"Gabriel",
-					"Seja bem-vindo ao Oxygeni Hub!",
+					"Bem-vindo ao Oxygeni Hub! Sua missão é conversar com os especialistas e conquistar os Pins da Jornada.",
 					"joinha"
 				),
 				make_dialogue_line(
 					"Gabriel",
-					"Aqui você vai aprender, criar e transformar ideias em soluções.",
+					"Cada especialista vai te apresentar um tema e fazer uma pergunta rápida.",
 					"explicando"
 				),
 				make_dialogue_line(
 					"Gabriel",
-					"Hoje começa sua primeira missão: conquistar a Faixa Branca.",
+					"Junte os 3 Pins para chegar à Faixa Branca e concluir sua jornada.",
 					"aponta_cima"
-				),
-				make_dialogue_line(
-					"Gabriel",
-					"Para isso, visite nossos especialistas, complete os desafios e conquiste os 3 Pins da Jornada.",
-					"joinha"
-				),
-				make_dialogue_line(
-					"Gabriel",
-					"Cada Pin representa um novo conhecimento.",
-					"base"
-				),
-				make_dialogue_line(
-					"Gabriel",
-					"Quando conseguir os três, procure o professor Marcos Barros.",
-					"explicando"
-				),
-				make_dialogue_line(
-					"Gabriel",
-					"Boa sorte! Sua jornada começa agora.",
-					"joinha"
 				)
 			]
 
@@ -413,27 +454,12 @@ func get_npc_conversation(
 				),
 				make_dialogue_line(
 					"Emanuel",
-					"Eu sou o Emanuel. Bem-vindo à Incode!",
+					"Eu sou o Emanuel. Na Incode, você aprende programação, lógica e como resolver problemas com tecnologia.",
 					"aponta_cima"
 				),
 				make_dialogue_line(
 					"Emanuel",
-					"Aqui você dá os primeiros passos na programação.",
-					"pensante"
-				),
-				make_dialogue_line(
-					"Emanuel",
-					"Programar é usar a lógica para resolver problemas e criar soluções.",
-					"base"
-				),
-				make_dialogue_line(
-					"Emanuel",
-					"Você vai conhecer linguagens como Python, aprender algoritmos e desenvolver seu raciocínio lógico.",
-					"pensante"
-				),
-				make_dialogue_line(
-					"Emanuel",
-					"Mas antes, vamos ver o que você já sabe!",
+					"Bora ver o que você já sabe?",
 					"aponta_cima"
 				)
 			]
@@ -447,22 +473,12 @@ func get_npc_conversation(
 				),
 				make_dialogue_line(
 					"Laura",
-					"Bem-vindo à TechX!",
+					"Na TechX, a gente conecta tecnologia, criatividade e desafios reais para criar soluções.",
 					"base"
 				),
 				make_dialogue_line(
 					"Laura",
-					"Aqui transformamos ideias em experiências.",
-					"explicando"
-				),
-				make_dialogue_line(
-					"Laura",
-					"No Front-end, criamos aquilo que o usuário vê e utiliza: telas, botões, menus e páginas.",
-					"base"
-				),
-				make_dialogue_line(
-					"Laura",
-					"Agora quero ver se você já aprendeu alguns conceitos.",
+					"Agora quero ver se você entendeu a ideia da TechX.",
 					"explicando"
 				)
 			]
@@ -950,8 +966,6 @@ func complete_rewarded_npc(completed_npc: NPC) -> void:
 	if reward_box.reward_is_open:
 		reward_box.close_reward()
 
-	hide_focus_overlay()
-
 	finish_npc_interaction(completed_npc)
 	clear_current_interaction()
 
@@ -959,6 +973,7 @@ func complete_rewarded_npc(completed_npc: NPC) -> void:
 		show_final_badge()
 		return
 
+	hide_focus_overlay()
 	open_next_objective_dialogue(completed_npc)
 
 
@@ -1005,7 +1020,9 @@ func get_final_badge_texture() -> Texture2D:
 
 
 func _on_restart_requested() -> void:
-	get_tree().reload_current_scene()
+	get_tree().change_scene_to_file(
+		"res://scenes/main_menu.tscn"
+	)
 
 
 # =========================================================
@@ -1044,6 +1061,9 @@ func preview_next_objective() -> void:
 
 	if next_npc == null:
 		return
+
+	objective_preview_is_active = true
+	player.stop_movement()
 
 	if objective_preview_tween != null:
 		objective_preview_tween.kill()
@@ -1090,6 +1110,7 @@ func _on_objective_preview_finished() -> void:
 	objective_preview_camera.global_position = player.global_position
 	player.make_camera_current()
 	objective_preview_camera.enabled = false
+	objective_preview_is_active = false
 
 
 # =========================================================

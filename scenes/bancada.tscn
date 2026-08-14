@@ -4,7 +4,7 @@
 [ext_resource type="Script" uid="uid://c54k7ejefbpbf" path="res://scripts/sortable_object.gd" id="2_sort"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_vhohb"]
-size = Vector2(628, 168)
+size = Vector2(596, 168)
 
 [node name="bancada" type="Node2D" unique_id=284954422]
 script = ExtResource("2_sort")
@@ -22,5 +22,5 @@ position = Vector2(0, 127)
 [node name="StaticBody2D" type="StaticBody2D" parent="Area2D" unique_id=2000348980]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D/StaticBody2D" unique_id=1847995243]
-position = Vector2(-26, -21)
+position = Vector2(-25, -21)
 shape = SubResource("RectangleShape2D_vhohb")

@@ -66,5 +66,17 @@ func _unhandled_input(event: InputEvent) -> void:
 
 	get_viewport().set_input_as_handled()
 
+	input_enabled = false
 	game_over_is_open = false
+
+	var tween: Tween = create_tween()
+	tween.tween_property(
+		self,
+		"modulate:a",
+		0.0,
+		0.25
+	)
+
+	await tween.finished
+
 	restart_requested.emit()

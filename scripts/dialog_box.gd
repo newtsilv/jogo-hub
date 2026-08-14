@@ -35,6 +35,7 @@ var portrait_tween: Tween
 
 var original_position: Vector2
 var dialogue_is_open: bool = false
+var dialogue_is_closing: bool = false
 var is_typing: bool = false
 
 
@@ -76,6 +77,7 @@ func start_dialogue(lines: Array[Dictionary]) -> void:
 	dialogue_lines = lines
 	current_line_index = 0
 	dialogue_is_open = true
+	dialogue_is_closing = false
 
 	show()
 	animate_opening()
@@ -258,7 +260,10 @@ func close_dialogue() -> void:
 	if not dialogue_is_open:
 		return
 
-	dialogue_is_open = false
+	if dialogue_is_closing:
+		return
+
+	dialogue_is_closing = true
 	is_typing = false
 
 	if typing_tween != null:
@@ -292,6 +297,8 @@ func close_dialogue() -> void:
 
 	await current_tween.finished
 
+	dialogue_is_open = false
+	dialogue_is_closing = false
 	hide()
 	position = original_position
 

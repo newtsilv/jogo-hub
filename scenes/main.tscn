@@ -92,6 +92,8 @@ z_index = -40
 script = ExtResource("32_pastel")
 
 [node name="BaseWash" type="Polygon2D" parent="World/PastelBackground" unique_id=121932115]
+position = Vector2(653, -402)
+scale = Vector2(1.1784483, 1.1784483)
 color = Color(0.85490197, 0.77254903, 0.96862745, 1)
 polygon = PackedVector2Array(-5200, -2600, 3600, -2600, 3600, 3200, -5200, 3200)
 
@@ -221,6 +223,7 @@ mouse_filter = 2
 color = Color(0, 0, 0, 0.22)
 
 [node name="HUD" type="HBoxContainer" parent="UI" unique_id=271365660]
+visible = false
 custom_minimum_size = Vector2(116, 32)
 anchors_preset = 1
 anchor_left = 1.0
@@ -257,10 +260,8 @@ anchors_preset = 12
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -18.0
-offset_top = 1332.0
-offset_right = -18.0
-offset_bottom = 1332.0
+offset_top = 1350.0
+offset_bottom = 1350.0
 grow_horizontal = 2
 grow_vertical = 0
 script = ExtResource("4_1bvp3")
@@ -367,7 +368,7 @@ layout_mode = 0
 offset_left = 276.465
 offset_top = 950.0
 offset_right = 769.46497
-offset_bottom = 1075.9999
+offset_bottom = 1160.0
 theme_override_font_sizes/normal_font_size = 34
 theme_override_font_sizes/bold_font_size = 34
 
@@ -381,9 +382,9 @@ offset_bottom = 925.0
 [node name="Answer1" type="TextureButton" parent="UI/Questions/QuestionBox" unique_id=1353735561]
 layout_mode = 0
 offset_left = 268.0
-offset_top = 1125.0
+offset_top = 1170.0
 offset_right = 786.0
-offset_bottom = 1254.0
+offset_bottom = 1299.0
 
 [node name="AnswerLabel" type="Label" parent="UI/Questions/QuestionBox/Answer1" unique_id=602535195]
 layout_mode = 1
@@ -405,9 +406,9 @@ clip_text = true
 [node name="Answer2" type="TextureButton" parent="UI/Questions/QuestionBox" unique_id=2035920990]
 layout_mode = 0
 offset_left = 268.0
-offset_top = 1285.0
+offset_top = 1330.0
 offset_right = 786.0
-offset_bottom = 1414.0
+offset_bottom = 1459.0
 
 [node name="AnswerLabel" type="Label" parent="UI/Questions/QuestionBox/Answer2" unique_id=1518355440]
 layout_mode = 1
@@ -429,9 +430,9 @@ clip_text = true
 [node name="Answer3" type="TextureButton" parent="UI/Questions/QuestionBox" unique_id=279320410]
 layout_mode = 0
 offset_left = 271.0
-offset_top = 1443.0
+offset_top = 1490.0
 offset_right = 789.0
-offset_bottom = 1572.0
+offset_bottom = 1619.0
 
 [node name="AnswerLabel" type="Label" parent="UI/Questions/QuestionBox/Answer3" unique_id=1310617681]
 layout_mode = 1
@@ -458,9 +459,9 @@ anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 offset_left = 40.0
-offset_top = -200.0
+offset_top = -250.0
 offset_right = 40.0
-offset_bottom = -200.0
+offset_bottom = -250.0
 grow_horizontal = 2
 grow_vertical = 2
 scale = Vector2(0.925, 0.925)
