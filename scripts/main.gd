@@ -47,6 +47,10 @@ var pending_game_over_dialogue: bool = false
 var pending_blocked_order_dialogue: bool = false
 var pending_final_badge: bool = false
 
+# Impede o jogador de se mover enquanto a câmera de objetivo está
+# fazendo o passeio até o próximo NPC.
+var is_previewing_objective: bool = false
+
 var npc_by_name: Dictionary = {}
 
 var collected_pins: Array[String] = []
@@ -210,6 +214,7 @@ func interface_is_open() -> bool:
 		or question_box.question_is_open
 		or reward_box.reward_is_open
 		or game_over_box.game_over_is_open
+		or is_previewing_objective
 	)
 
 
@@ -1083,6 +1088,9 @@ func preview_next_objective() -> void:
 		objective_preview_tween.kill()
 		player.make_camera_current()
 
+	is_previewing_objective = true
+	player.stop_movement()
+
 	objective_preview_camera.global_position = player.global_position
 	objective_preview_camera.enabled = true
 	objective_preview_camera.make_current()
@@ -1124,6 +1132,7 @@ func _on_objective_preview_finished() -> void:
 	objective_preview_camera.global_position = player.global_position
 	player.make_camera_current()
 	objective_preview_camera.enabled = false
+	is_previewing_objective = false
 
 
 # =========================================================

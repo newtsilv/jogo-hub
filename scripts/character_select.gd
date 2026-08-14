@@ -12,9 +12,9 @@ extends Control
 )
 
 
-@onready var pedro_button: TextureButton = $PedroButton
-@onready var maria_button: TextureButton = $MariaButton
-@onready var back_button: TextureButton = $BackButton
+@onready var pedro_button: Button = $PedroButton
+@onready var maria_button: Button = $MariaButton
+@onready var back_button: Button = $BackButton
 
 
 func _ready() -> void:
