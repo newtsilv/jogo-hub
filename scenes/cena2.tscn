@@ -1,0 +1,50 @@
+[gd_scene format=3 uid="uid://ds76w1owb8qaj"]
+
+[ext_resource type="Script" uid="uid://7k22q56vsxev" path="res://scripts/cena_2.gd" id="1_55wq6"]
+[ext_resource type="Texture2D" uid="uid://3g5oxujgc0dt" path="res://assets/sprites/scenes/cena2/fundo.png" id="2_k27am"]
+[ext_resource type="Texture2D" uid="uid://davqrys86em2j" path="res://assets/sprites/scenes/cena2/professor (2).png" id="3_6lck5"]
+[ext_resource type="Texture2D" uid="uid://ca2kybnb5vgqt" path="res://assets/sprites/scenes/cena3/tv.png" id="5_v0k0q"]
+
+[node name="Control2" type="Control" unique_id=1965172978]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_55wq6")
+
+[node name="Fundo" type="TextureRect" parent="." unique_id=1201129094]
+layout_mode = 0
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_k27am")
+
+[node name="TV" type="TextureRect" parent="." unique_id=1717890845]
+layout_mode = 0
+offset_left = 104.0
+offset_top = 1055.0
+offset_right = 608.0
+offset_bottom = 1686.0
+mouse_filter = 2
+texture = ExtResource("5_v0k0q")
+
+[node name="Professor" type="TextureRect" parent="." unique_id=1996418694]
+layout_mode = 0
+offset_left = 60.0
+offset_top = 1150.0
+offset_right = 1020.0
+offset_bottom = 1859.0
+mouse_filter = 2
+texture = ExtResource("3_6lck5")
+
+[node name="skip" type="Button" parent="." unique_id=1855576386]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 0
+offset_top = -4.0
+offset_right = 1114.0
+offset_bottom = 1946.0
+
+[connection signal="pressed" from="skip" to="." method="_on_skip_pressed"]
