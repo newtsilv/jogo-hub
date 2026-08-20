@@ -1,9 +1,13 @@
 [gd_scene format=3 uid="uid://cpu5sgxilhdp7"]
 
-[ext_resource type="Texture2D" path="res://assets/sprites/cena1_fundo.png" id="1_20dcs"]
 [ext_resource type="Script" uid="uid://bqlkghplx8sm0" path="res://scripts/cena_1.gd" id="1_85hpt"]
-[ext_resource type="Texture2D" path="res://assets/sprites/cena1_personagem_esquerda.png" id="2_esq"]
-[ext_resource type="Texture2D" path="res://assets/sprites/cena1_personagem_direita.png" id="3_dir"]
+[ext_resource type="Texture2D" uid="uid://bohhuh7hteypd" path="res://assets/sprites/scenes/cena1/fundo.png" id="2_fundo"]
+[ext_resource type="Texture2D" uid="uid://c823etm0jahso" path="res://assets/sprites/scenes/cena1/oxyquest.png" id="3_logo"]
+[ext_resource type="Texture2D" uid="uid://cvwywy1oat11b" path="res://assets/sprites/scenes/cena1/jogar.png" id="4_jogar"]
+[ext_resource type="Texture2D" uid="uid://biu3geha578gh" path="res://assets/sprites/scenes/cena1/image 569 (1).png" id="4_mc1gy"]
+[ext_resource type="Texture2D" uid="uid://d0y1olmd4ef8g" path="res://assets/sprites/scenes/cena1/image 569.png" id="5_m5i17"]
+[ext_resource type="Texture2D" uid="uid://dcew5wbr55ep2" path="res://assets/sprites/scenes/cena1/sair.png" id="5_sair"]
+[ext_resource type="Texture2D" uid="uid://cyrkodnjkwaxd" path="res://assets/sprites/scenes/cena1/creditos.png" id="6_creditos"]
 
 [node name="Control" type="Control" unique_id=1491609987]
 layout_mode = 3
@@ -14,14 +18,22 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_85hpt")
 
-[node name="TextureRect" type="TextureRect" parent="." unique_id=1570201481]
+[node name="Fundo" type="TextureRect" parent="." unique_id=1570201481]
 layout_mode = 0
-anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("1_20dcs")
+texture = ExtResource("2_fundo")
+
+[node name="Logo" type="TextureRect" parent="." unique_id=1270218863]
+layout_mode = 0
+offset_left = 262.5
+offset_top = 195.0
+offset_right = 817.5
+offset_bottom = 663.0
+mouse_filter = 2
+texture = ExtResource("3_logo")
 
 [node name="PersonagemEsquerda" type="TextureRect" parent="." unique_id=1653481001]
 layout_mode = 0
@@ -30,7 +42,7 @@ offset_top = 1353.0
 offset_right = 399.0
 offset_bottom = 1890.0
 mouse_filter = 2
-texture = ExtResource("2_esq")
+texture = ExtResource("4_mc1gy")
 
 [node name="PersonagemDireita" type="TextureRect" parent="." unique_id=1653481002]
 layout_mode = 0
@@ -39,32 +51,59 @@ offset_top = 1384.0
 offset_right = 1010.0
 offset_bottom = 1920.0
 mouse_filter = 2
-texture = ExtResource("3_dir")
+texture = ExtResource("5_m5i17")
 
-[node name="Start" type="Button" parent="TextureRect" unique_id=1606826396]
+[node name="Start" type="TextureRect" parent="." unique_id=1606826396]
+layout_mode = 0
+offset_left = 100.5
+offset_top = 657.0
+offset_right = 979.5
+offset_bottom = 1102.0
+mouse_filter = 2
+texture = ExtResource("4_jogar")
+
+[node name="StartHitbox" type="Button" parent="." unique_id=1670720775]
 modulate = Color(1, 1, 1, 0)
 layout_mode = 0
 offset_left = 253.0
-offset_top = 804.0
-offset_right = 825.0
-offset_bottom = 955.0
+offset_top = 793.0
+offset_right = 804.0
+offset_bottom = 920.0
 
-[node name="Quit" type="Button" parent="TextureRect" unique_id=428213392]
+[node name="Quit" type="TextureRect" parent="." unique_id=428213392]
+layout_mode = 0
+offset_left = 100.5
+offset_top = 822.0
+offset_right = 979.5
+offset_bottom = 1267.0
+mouse_filter = 2
+texture = ExtResource("5_sair")
+
+[node name="QuitHitbox" type="Button" parent="." unique_id=1203522317]
 modulate = Color(1, 1, 1, 0)
 layout_mode = 0
-offset_left = 260.0
-offset_top = 980.0
-offset_right = 822.0
-offset_bottom = 1108.0
+offset_left = 242.0
+offset_top = 959.0
+offset_right = 804.0
+offset_bottom = 1087.0
 
-[node name="Credt" type="Button" parent="TextureRect" unique_id=768134785]
+[node name="Credt" type="TextureRect" parent="." unique_id=768134785]
+layout_mode = 0
+offset_left = 100.5
+offset_top = 992.0
+offset_right = 979.5
+offset_bottom = 1437.0
+mouse_filter = 2
+texture = ExtResource("6_creditos")
+
+[node name="CredtHitbox" type="Button" parent="." unique_id=1348209266]
 modulate = Color(1, 1, 1, 0)
 layout_mode = 0
-offset_left = 257.0
-offset_top = 1151.0
-offset_right = 833.0
-offset_bottom = 1279.0
+offset_left = 234.0
+offset_top = 1130.0
+offset_right = 810.0
+offset_bottom = 1258.0
 
-[connection signal="pressed" from="TextureRect/Start" to="." method="_on_start_pressed"]
-[connection signal="pressed" from="TextureRect/Quit" to="." method="_on_quit_pressed"]
-[connection signal="pressed" from="TextureRect/Credt" to="." method="_on_credt_pressed"]
+[connection signal="pressed" from="StartHitbox" to="." method="_on_start_pressed"]
+[connection signal="pressed" from="QuitHitbox" to="." method="_on_quit_pressed"]
+[connection signal="pressed" from="CredtHitbox" to="." method="_on_credt_pressed"]

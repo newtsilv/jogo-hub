@@ -14,9 +14,13 @@ script = ExtResource("1_36ipf")
 
 [node name="TextureRect" type="TextureRect" parent="." unique_id=1114983087]
 layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 texture = ExtResource("1_8w7td")
+expand_mode = 1
+stretch_mode = 5
 
 [node name="Skip" type="Button" parent="." unique_id=867343696]
 modulate = Color(1, 1, 1, 0)

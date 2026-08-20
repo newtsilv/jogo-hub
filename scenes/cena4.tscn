@@ -1,9 +1,13 @@
 [gd_scene format=3 uid="uid://bjds4iqs36mqf"]
 
 [ext_resource type="Script" uid="uid://yn0pcq3pfle" path="res://scripts/cena_4.gd" id="1_e6k1r"]
-[ext_resource type="Texture2D" uid="uid://brcrdt3741c5h" path="res://assets/Figma/Cena_04.png" id="1_r3tk5"]
+[ext_resource type="Texture2D" uid="uid://v65l53c0ls4l" path="res://assets/sprites/scenes/cena4/fundo.png" id="2_n5ex2"]
+[ext_resource type="Texture2D" uid="uid://vy2hp16c3icv" path="res://assets/sprites/scenes/cena4/Tela_hub_salas_cima.png" id="3_gxmvv"]
+[ext_resource type="Texture2D" uid="uid://cvvbpnn0sb8vg" path="res://assets/sprites/scenes/cena4/Tela_hub_salas_baixo.png" id="4_176my"]
+[ext_resource type="Texture2D" uid="uid://da0bc5a43ydey" path="res://assets/sprites/scenes/cena4/professor.png" id="5_ok0cv"]
+[ext_resource type="Texture2D" uid="uid://da4fdt2463sti" path="res://assets/sprites/scenes/cena8/oxyquest.png" id="6_w1cbi"]
 
-[node name="Control" type="Control" unique_id=1915611891]
+[node name="Control2" type="Control" unique_id=1915611891]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -12,11 +16,44 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_e6k1r")
 
-[node name="TextureRect" type="TextureRect" parent="." unique_id=1029088188]
+[node name="Fundo" type="TextureRect" parent="." unique_id=1029088188]
 layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0
-texture = ExtResource("1_r3tk5")
+offset_right = 1080.0
+offset_bottom = 1920.0
+texture = ExtResource("2_n5ex2")
+
+[node name="TelaCima" type="TextureRect" parent="." unique_id=205891893]
+layout_mode = 0
+offset_left = 53.5
+offset_top = 100.0
+offset_right = 1026.5
+offset_bottom = 696.0
+texture = ExtResource("3_gxmvv")
+
+[node name="TelaBaixo" type="TextureRect" parent="." unique_id=999956740]
+layout_mode = 0
+offset_left = 53.5
+offset_top = 796.0
+offset_right = 1026.5
+offset_bottom = 1392.0
+texture = ExtResource("4_176my")
+
+[node name="Professor" type="TextureRect" parent="." unique_id=661844561]
+layout_mode = 0
+offset_left = 46.0
+offset_top = 1250.0
+offset_right = 1034.0
+offset_bottom = 1835.0
+texture = ExtResource("5_ok0cv")
+
+[node name="Logo" type="TextureRect" parent="." unique_id=783622723]
+visible = false
+layout_mode = 0
+offset_left = 262.5
+offset_top = 190.0
+offset_right = 817.5
+offset_bottom = 658.0
+texture = ExtResource("6_w1cbi")
 
 [node name="Skip" type="Button" parent="." unique_id=982359402]
 modulate = Color(1, 1, 1, 0)

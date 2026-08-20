@@ -1,15 +1,7 @@
-extends Control
-
-
-# Called when the node enters the scene tree for the first time.
-func _ready() -> void:
-	pass # Replace with function body.
-
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	pass
+extends "res://scripts/layered_cutscene.gd"
 
 
 func _on_skip_pressed() -> void:
-	SceneTransition.change_scene("res://scenes/character_select.tscn")
+	$Skip.disabled = true
+	await _play_outro_animation()
+	SceneTransition.fade_change_scene("res://scenes/character_select.tscn")

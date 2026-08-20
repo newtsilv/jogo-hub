@@ -1,11 +1,12 @@
 [gd_scene format=3 uid="uid://kp7r0i1enuey"]
 
 [ext_resource type="Script" uid="uid://bp8wn42b0pyfp" path="res://scripts/cena_5.gd" id="1_mshi0"]
+[ext_resource type="Texture2D" uid="uid://ci0hjsgjfyto3" path="res://assets/sprites/scenes/cena5/fundo.png" id="2_o0slf"]
+[ext_resource type="Texture2D" uid="uid://ca8skvf8l1va8" path="res://assets/sprites/scenes/cena5/imagem_cima.png" id="3_6hrtd"]
+[ext_resource type="Texture2D" uid="uid://dmfi6cqvfokcb" path="res://assets/sprites/scenes/cena5/imagem_baixo.png" id="4_vg17w"]
+[ext_resource type="Texture2D" uid="uid://07w4rpqnovf1" path="res://assets/sprites/scenes/cena5/professor.png" id="5_7etja"]
 
-[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_w5fj5"]
-load_path = "res://.godot/imported/Cena_05.png-3ba388bc5d897e7237813008be0dd7ae.ctex"
-
-[node name="Control" type="Control" unique_id=1157065721]
+[node name="Control2" type="Control" unique_id=1157065721]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -14,11 +15,35 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_mshi0")
 
-[node name="TextureRect" type="TextureRect" parent="." unique_id=316797322]
+[node name="Fundo" type="TextureRect" parent="." unique_id=316797322]
 layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0
-texture = SubResource("CompressedTexture2D_w5fj5")
+offset_right = 1080.0
+offset_bottom = 1920.0
+texture = ExtResource("2_o0slf")
+
+[node name="TelaCima" type="TextureRect" parent="." unique_id=778446671]
+layout_mode = 0
+offset_left = 53.5
+offset_top = 100.0
+offset_right = 1026.5
+offset_bottom = 696.0
+texture = ExtResource("3_6hrtd")
+
+[node name="TelaBaixo" type="TextureRect" parent="." unique_id=921755569]
+layout_mode = 0
+offset_left = 53.5
+offset_top = 796.0
+offset_right = 1026.5
+offset_bottom = 1392.0
+texture = ExtResource("4_vg17w")
+
+[node name="Professor" type="TextureRect" parent="." unique_id=276876527]
+layout_mode = 0
+offset_left = 42.5
+offset_top = 1250.0
+offset_right = 1037.5
+offset_bottom = 1850.0
+texture = ExtResource("5_7etja")
 
 [node name="Skip" type="Button" parent="." unique_id=173569909]
 modulate = Color(1, 1, 1, 0)

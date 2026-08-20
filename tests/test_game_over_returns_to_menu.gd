@@ -3,6 +3,7 @@ extends SceneTree
 
 const MAIN_SCRIPT_PATH := "res://scripts/main.gd"
 const GAME_OVER_SCRIPT_PATH := "res://scripts/game_over_box.gd"
+const CHARACTER_SELECT_SCRIPT_PATH := "res://scripts/character_select.gd"
 
 
 var failures: int = 0
@@ -11,15 +12,25 @@ var failures: int = 0
 func _init() -> void:
 	var main_script_text := read_text(MAIN_SCRIPT_PATH)
 	var game_over_script_text := read_text(GAME_OVER_SCRIPT_PATH)
+	var character_select_script_text := read_text(CHARACTER_SELECT_SCRIPT_PATH)
 
 	assert_true(
 		main_script_text.contains(
 			"func _on_restart_requested() -> void:\n"
 			+ "\tget_tree().change_scene_to_file(\n"
-			+ "\t\t\"res://scenes/main_menu.tscn\"\n"
+			+ "\t\t\"res://scenes/cena1.tscn\"\n"
 			+ "\t)"
 		),
-		"Game Over restart should return to the initial menu scene."
+		"Game Over restart should return to cena1."
+	)
+
+	assert_true(
+		character_select_script_text.contains(
+			"@export_file(\"*.tscn\") var menu_scene_path: String = (\n"
+			+ "\t\"res://scenes/cena1.tscn\"\n"
+			+ ")"
+		),
+		"Character select back button should return to cena1."
 	)
 
 	assert_true(

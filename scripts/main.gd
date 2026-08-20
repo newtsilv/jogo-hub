@@ -1049,7 +1049,7 @@ func get_final_badge_texture() -> Texture2D:
 
 func _on_restart_requested() -> void:
 	get_tree().change_scene_to_file(
-		"res://scenes/main_menu.tscn"
+		"res://scenes/cena1.tscn"
 	)
 
 

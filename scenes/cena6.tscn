@@ -1,9 +1,12 @@
 [gd_scene format=3 uid="uid://og6vr3rxtnd5"]
 
-[ext_resource type="Texture2D" uid="uid://cynr37j85jjkc" path="res://assets/Figma/Cena_06.png" id="1_4o1yh"]
 [ext_resource type="Script" uid="uid://cppfin2abbqh" path="res://scripts/cena_6.gd" id="1_q3ntq"]
+[ext_resource type="Texture2D" uid="uid://ds514uwfuju6c" path="res://assets/sprites/scenes/cena6/fundo.png" id="2_xdtwh"]
+[ext_resource type="Texture2D" uid="uid://b37om3brpntc5" path="res://assets/sprites/scenes/cena6/imagem_cima.png" id="3_ky6xl"]
+[ext_resource type="Texture2D" uid="uid://b47qloeur307e" path="res://assets/sprites/scenes/cena6/imagem_baixo.png" id="4_yfwde"]
+[ext_resource type="Texture2D" uid="uid://cqmui5iq814oj" path="res://assets/sprites/scenes/cena6/professor.png" id="5_p3vq5"]
 
-[node name="Control" type="Control" unique_id=479230436]
+[node name="Control2" type="Control" unique_id=479230436]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -12,11 +15,35 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_q3ntq")
 
-[node name="TextureRect" type="TextureRect" parent="." unique_id=484767851]
+[node name="Fundo" type="TextureRect" parent="." unique_id=484767851]
 layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0
-texture = ExtResource("1_4o1yh")
+offset_right = 1080.0
+offset_bottom = 1920.0
+texture = ExtResource("2_xdtwh")
+
+[node name="TelaCima" type="TextureRect" parent="." unique_id=682936740]
+layout_mode = 0
+offset_left = 53.5
+offset_top = 100.0
+offset_right = 1026.5
+offset_bottom = 696.0
+texture = ExtResource("3_ky6xl")
+
+[node name="TelaBaixo" type="TextureRect" parent="." unique_id=733703821]
+layout_mode = 0
+offset_left = 53.5
+offset_top = 796.0
+offset_right = 1026.5
+offset_bottom = 1392.0
+texture = ExtResource("4_yfwde")
+
+[node name="Professor" type="TextureRect" parent="." unique_id=624607784]
+layout_mode = 0
+offset_left = 46.5
+offset_top = 1250.0
+offset_right = 1033.5
+offset_bottom = 1857.0
+texture = ExtResource("5_p3vq5")
 
 [node name="Skip" type="Button" parent="." unique_id=1233472522]
 modulate = Color(1, 1, 1, 0)

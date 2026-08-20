@@ -13,6 +13,10 @@ signal dialogue_finished
 @export var characters_per_second: float = 35.0
 
 
+const DESIGN_HEIGHT: float = 1920.0
+const EXTRA_TALL_SCREEN_DIALOGUE_OFFSET_RATIO: float = 0.42
+
+
 @export_category("Fundos por tema")
 @export var default_background: Texture2D
 @export var incode_background: Texture2D
@@ -33,6 +37,7 @@ var current_tween: Tween
 var typing_tween: Tween
 var portrait_tween: Tween
 
+var base_position: Vector2
 var original_position: Vector2
 var dialogue_is_open: bool = false
 var dialogue_is_closing: bool = false
@@ -40,8 +45,22 @@ var is_typing: bool = false
 
 
 func _ready() -> void:
-	original_position = position
+	base_position = position
+	_apply_responsive_layout()
+	resized.connect(_apply_responsive_layout)
 	hide()
+
+
+func _apply_responsive_layout() -> void:
+	var viewport_height: float = get_viewport_rect().size.y
+	var bottom_margin: float = maxf(
+		0.0,
+		viewport_height - DESIGN_HEIGHT
+	) * EXTRA_TALL_SCREEN_DIALOGUE_OFFSET_RATIO
+	original_position = base_position + Vector2(0.0, bottom_margin)
+
+	if not dialogue_is_open or not dialogue_is_closing:
+		position = original_position
 
 
 func _unhandled_input(event: InputEvent) -> void:

@@ -9,6 +9,7 @@ const CIRCLE_WIPE_SHADER := preload("res://assets/shaders/circle_wipe.gdshader")
 @export var default_duration: float = 0.6
 
 var _wipe_rect: ColorRect
+var _fade_rect: ColorRect
 var _material: ShaderMaterial
 var _max_radius: float = 1.0
 
@@ -26,6 +27,14 @@ func _ready() -> void:
 	_material = ShaderMaterial.new()
 	_material.shader = CIRCLE_WIPE_SHADER
 	_wipe_rect.material = _material
+
+	_fade_rect = ColorRect.new()
+	_fade_rect.name = "FadeRect"
+	_fade_rect.color = Color(0, 0, 0, 1)
+	_fade_rect.modulate.a = 0.0
+	_fade_rect.mouse_filter = Control.MOUSE_FILTER_IGNORE
+	_fade_rect.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
+	add_child(_fade_rect)
 
 	_update_max_radius()
 	_set_radius(_max_radius) # começa totalmente aberto (sem preto visível)
@@ -91,3 +100,25 @@ func change_scene(
 	await get_tree().process_frame
 
 	await open(duration, center)
+
+
+## Faz fade para preto, troca de cena e volta do preto para a cena nova.
+func fade_change_scene(
+	scene_path: String,
+	duration: float = -1.0
+) -> void:
+	if duration < 0.0:
+		duration = default_duration
+
+	var fade_out: Tween = create_tween()
+	fade_out.tween_property(_fade_rect, "modulate:a", 1.0, duration)
+	await fade_out.finished
+
+	get_tree().change_scene_to_file(scene_path)
+
+	await get_tree().process_frame
+	await get_tree().process_frame
+
+	var fade_in: Tween = create_tween()
+	fade_in.tween_property(_fade_rect, "modulate:a", 0.0, duration)
+	await fade_in.finished
