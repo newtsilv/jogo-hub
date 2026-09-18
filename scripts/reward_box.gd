@@ -9,6 +9,8 @@ signal reward_closed
 
 
 const REWARD_MESSAGE_SIZE := Vector2(1080, 1920)
+const DESIGN_HEIGHT: float = 1920.0
+const EXTRA_TALL_SCREEN_REWARD_OFFSET_RATIO: float = 0.34
 
 
 @onready var message_image: TextureRect = $MessageImage
@@ -20,12 +22,28 @@ var reward_is_open: bool = false
 var input_enabled: bool = false
 
 var current_tween: Tween
+var message_design_position: Vector2
+var pin_design_position: Vector2
 
 
 func _ready() -> void:
+	message_design_position = message_image.position
+	pin_design_position = pin_image.position
+	_apply_responsive_layout()
+	resized.connect(_apply_responsive_layout)
 	pin_image.hide()
 	reward_text.hide()
 	hide()
+
+
+func _apply_responsive_layout() -> void:
+	var extra_height: float = maxf(
+		0.0,
+		get_viewport_rect().size.y - DESIGN_HEIGHT
+	)
+	var vertical_offset: float = extra_height * EXTRA_TALL_SCREEN_REWARD_OFFSET_RATIO
+	message_image.position = message_design_position + Vector2(0.0, vertical_offset)
+	pin_image.position = pin_design_position + Vector2(0.0, vertical_offset)
 
 
 func show_reward(
@@ -37,6 +55,7 @@ func show_reward(
 
 	message_image.custom_minimum_size = REWARD_MESSAGE_SIZE
 	message_image.size = REWARD_MESSAGE_SIZE
+	_apply_responsive_layout()
 	message_image.texture = message_texture
 	message_image.show()
 	pin_image.hide()

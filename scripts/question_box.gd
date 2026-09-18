@@ -113,6 +113,7 @@ enum QuestionTheme {
 var correct_answer_index: int = 0
 
 var question_is_open: bool = false
+var question_is_closing: bool = false
 var accepting_answer: bool = false
 
 var original_position: Vector2
@@ -199,6 +200,7 @@ func start_question(question: Dictionary) -> void:
 		return
 
 	question_is_open = true
+	question_is_closing = false
 	accepting_answer = true
 
 	correct_answer_index = int(
@@ -471,7 +473,10 @@ func close_question_box() -> void:
 	if not question_is_open:
 		return
 
-	question_is_open = false
+	if question_is_closing:
+		return
+
+	question_is_closing = true
 	accepting_answer = false
 
 	disable_answer_buttons()
@@ -501,6 +506,8 @@ func close_question_box() -> void:
 
 	await current_tween.finished
 
+	question_is_open = false
+	question_is_closing = false
 	hide()
 
 	position = original_position

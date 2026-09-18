@@ -1,0 +1,78 @@
+[gd_scene load_steps=6 format=3]
+
+[ext_resource type="Script" path="res://scripts/creditos.gd" id="1_script"]
+[ext_resource type="Texture2D" path="res://assets/sprites/scenes/creditos/oxyquest.png" id="2_oxyquest"]
+[ext_resource type="Texture2D" path="res://assets/sprites/scenes/creditos/Uma produção da Oxygeni Hub.png" id="3_producao"]
+[ext_resource type="Texture2D" path="res://assets/sprites/scenes/creditos/nomes.png" id="4_nomes"]
+[ext_resource type="Texture2D" path="res://assets/sprites/scenes/creditos/agradecimentos.png" id="5_agradecimentos"]
+
+[node name="Creditos" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_script")
+
+[node name="Background" type="ColorRect" parent="."]
+layout_mode = 0
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="Oxyquest" type="TextureRect" parent="."]
+layout_mode = 0
+offset_left = 180.0
+offset_top = 130.0
+offset_right = 900.0
+offset_bottom = 430.0
+mouse_filter = 2
+texture = ExtResource("2_oxyquest")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Producao" type="TextureRect" parent="."]
+layout_mode = 0
+offset_left = 120.0
+offset_top = 510.0
+offset_right = 960.0
+offset_bottom = 760.0
+mouse_filter = 2
+texture = ExtResource("3_producao")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Nomes" type="TextureRect" parent="."]
+layout_mode = 0
+offset_left = 110.0
+offset_top = 840.0
+offset_right = 970.0
+offset_bottom = 1260.0
+mouse_filter = 2
+texture = ExtResource("4_nomes")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Agradecimentos" type="TextureRect" parent="."]
+layout_mode = 0
+offset_left = 110.0
+offset_top = 1360.0
+offset_right = 970.0
+offset_bottom = 1740.0
+mouse_filter = 2
+texture = ExtResource("5_agradecimentos")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="BackButton" type="Button" parent="."]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 0
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[connection signal="pressed" from="BackButton" to="." method="_on_back_pressed"]

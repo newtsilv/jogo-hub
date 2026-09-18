@@ -25,6 +25,11 @@ func _init() -> void:
 	)
 	assert_contains(
 		main_script_text,
+		"if collected_pins.size() >= 3:\n\t\tshow_final_badge()",
+		"The final badge should show before hiding the focus overlay."
+	)
+	assert_contains(
+		main_script_text,
 		"await reward_box.show_reward(",
 		"The final badge should be shown as a clickable reward screen."
 	)
@@ -52,6 +57,11 @@ func _init() -> void:
 		main_scene_text,
 		"crachá-mulher.png",
 		"Main scene should include Maria's badge asset."
+	)
+	assert_contains(
+		FileAccess.get_file_as_string("res://project.godot"),
+		"config/icon=\"res://assets/sprites/pin oxygeni.png\"",
+		"The APK app icon should use the Oxygeni pin image."
 	)
 
 	quit(0)

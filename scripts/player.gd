@@ -119,12 +119,19 @@ func _physics_process(delta: float) -> void:
 
 
 func move_to(new_target_position: Vector2) -> void:
+	var was_already_moving: bool = is_moving
+
 	target_position = new_target_position
 	is_moving = true
 
-	walk_time = 0.0
-	stuck_time = 0.0
-	last_position = global_position
+	if not was_already_moving:
+		walk_time = 0.0
+		stuck_time = 0.0
+		last_position = global_position
+
+
+func get_foot_offset() -> Vector2:
+	return sort_point.position
 
 
 func point_objective_arrow_to(target_global_position: Vector2) -> void:

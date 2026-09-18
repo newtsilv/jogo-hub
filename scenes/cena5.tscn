@@ -1,0 +1,56 @@
+[gd_scene format=3 uid="uid://kp7r0i1enuey"]
+
+[ext_resource type="Script" uid="uid://bp8wn42b0pyfp" path="res://scripts/cena_5.gd" id="1_mshi0"]
+[ext_resource type="Texture2D" uid="uid://ci0hjsgjfyto3" path="res://assets/sprites/scenes/cena5/fundo.png" id="2_o0slf"]
+[ext_resource type="Texture2D" uid="uid://ca8skvf8l1va8" path="res://assets/sprites/scenes/cena5/imagem_cima.png" id="3_6hrtd"]
+[ext_resource type="Texture2D" uid="uid://dmfi6cqvfokcb" path="res://assets/sprites/scenes/cena5/imagem_baixo.png" id="4_vg17w"]
+[ext_resource type="Texture2D" uid="uid://07w4rpqnovf1" path="res://assets/sprites/scenes/cena5/professor.png" id="5_7etja"]
+
+[node name="Control2" type="Control" unique_id=1157065721]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_mshi0")
+
+[node name="Fundo" type="TextureRect" parent="." unique_id=316797322]
+layout_mode = 0
+offset_right = 1080.0
+offset_bottom = 1920.0
+texture = ExtResource("2_o0slf")
+
+[node name="TelaCima" type="TextureRect" parent="." unique_id=778446671]
+layout_mode = 0
+offset_left = 53.5
+offset_top = 100.0
+offset_right = 1026.5
+offset_bottom = 696.0
+texture = ExtResource("3_6hrtd")
+
+[node name="TelaBaixo" type="TextureRect" parent="." unique_id=921755569]
+layout_mode = 0
+offset_left = 53.5
+offset_top = 796.0
+offset_right = 1026.5
+offset_bottom = 1392.0
+texture = ExtResource("4_vg17w")
+
+[node name="Professor" type="TextureRect" parent="." unique_id=276876527]
+layout_mode = 0
+offset_left = 42.5
+offset_top = 1250.0
+offset_right = 1037.5
+offset_bottom = 1850.0
+texture = ExtResource("5_7etja")
+
+[node name="Skip" type="Button" parent="." unique_id=173569909]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 0
+offset_left = 12.0
+offset_top = 5.0
+offset_right = 1080.0
+offset_bottom = 1917.0
+
+[connection signal="pressed" from="Skip" to="." method="_on_skip_pressed"]

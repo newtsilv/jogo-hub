@@ -1,118 +1,41 @@
 [gd_scene format=3 uid="uid://cvwwfpscw0ilx"]
 
 [ext_resource type="Script" uid="uid://mayctbfqlv6l" path="res://scripts/character_select.gd" id="1_select"]
-[ext_resource type="Texture2D" uid="uid://bhcrajufs1tse" path="res://assets/sprites/prota homem.png" id="3_uxcyu"]
-[ext_resource type="Texture2D" uid="uid://cxfrfrq1txidv" path="res://assets/sprites/botao.png" id="4_back"]
-[ext_resource type="Texture2D" uid="uid://rhmlax77q42j" path="res://assets/sprites/prota mulher.png" id="4_fa52j"]
+[ext_resource type="Texture2D" path="res://assets/sprites/character_select_fundo.png" id="2_fundo"]
 
 [node name="CharacterSelect" type="Control" unique_id=1963366136]
 layout_mode = 3
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
+offset_right = 1080.0
+offset_bottom = 1920.0
 script = ExtResource("1_select")
 
-[node name="Background" type="ColorRect" parent="." unique_id=1752943342]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-color = Color(0.10980392, 0.03137255, 0.28627452, 1)
-
-[node name="TitleLabel" type="Label" parent="." unique_id=1591108630]
+[node name="Background" type="TextureRect" parent="." unique_id=1752943342]
 layout_mode = 0
-offset_left = 40.0
-offset_top = 160.0
-offset_right = 1040.0
-offset_bottom = 300.0
-theme_override_colors/font_color = Color(1, 1, 1, 1)
-theme_override_font_sizes/font_size = 64
-text = "ESCOLHA SEU PERSONAGEM"
-horizontal_alignment = 1
-vertical_alignment = 1
-autowrap_mode = 2
+offset_right = 1080.0
+offset_bottom = 1920.0
+mouse_filter = 2
+texture = ExtResource("2_fundo")
 
-[node name="BackButton" type="TextureButton" parent="." unique_id=1639980226]
+[node name="PedroButton" type="Button" parent="." unique_id=1492365118]
+modulate = Color(1, 1, 1, 0)
 layout_mode = 0
-offset_left = 40.0
-offset_top = 50.0
-offset_right = 250.0
-offset_bottom = 130.0
-texture_normal = ExtResource("4_back")
-ignore_texture_size = true
-stretch_mode = 5
+offset_left = 85.0
+offset_top = 700.0
+offset_right = 506.0
+offset_bottom = 1300.0
 
-[node name="BackLabel" type="Label" parent="BackButton" unique_id=2123725639]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_colors/font_color = Color(1, 1, 1, 1)
-theme_override_font_sizes/font_size = 32
-text = "VOLTAR"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="PedroButton" type="TextureButton" parent="." unique_id=1492365118]
+[node name="MariaButton" type="Button" parent="." unique_id=1843057812]
+modulate = Color(1, 1, 1, 0)
 layout_mode = 0
-offset_left = 60.0
-offset_top = 420.0
-offset_right = 520.0
-offset_bottom = 1260.0
-texture_normal = ExtResource("3_uxcyu")
-ignore_texture_size = true
-stretch_mode = 5
+offset_left = 573.0
+offset_top = 700.0
+offset_right = 995.0
+offset_bottom = 1300.0
 
-[node name="PedroLabel" type="Label" parent="PedroButton" unique_id=860183864]
+[node name="BackButton" type="Button" parent="." unique_id=1639980226]
+modulate = Color(1, 1, 1, 0)
 layout_mode = 0
-offset_top = 750.0
-offset_right = 460.0
-offset_bottom = 830.0
-theme_override_colors/font_color = Color(1, 1, 1, 1)
-theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
-theme_override_constants/outline_size = 8
-theme_override_font_sizes/font_size = 56
-text = "PEDRO"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="MariaButton" type="TextureButton" parent="." unique_id=1843057812]
-layout_mode = 0
-offset_left = 560.0
-offset_top = 420.0
-offset_right = 1020.0
-offset_bottom = 1260.0
-texture_normal = ExtResource("4_fa52j")
-ignore_texture_size = true
-stretch_mode = 5
-
-[node name="MariaLabel" type="Label" parent="MariaButton" unique_id=1452149261]
-layout_mode = 0
-offset_top = 750.0
-offset_right = 460.0
-offset_bottom = 830.0
-theme_override_colors/font_color = Color(1, 1, 1, 1)
-theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
-theme_override_constants/outline_size = 8
-theme_override_font_sizes/font_size = 56
-text = "MARIA"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="HintLabel" type="Label" parent="." unique_id=254588417]
-layout_mode = 0
-offset_left = 40.0
-offset_top = 1320.0
-offset_right = 1040.0
-offset_bottom = 1380.0
-theme_override_colors/font_color = Color(0.8, 0.78, 0.9, 1)
-theme_override_font_sizes/font_size = 34
-text = "Toque em um personagem para continuar"
-horizontal_alignment = 1
-vertical_alignment = 1
+offset_left = 419.0
+offset_top = 1751.0
+offset_right = 673.0
+offset_bottom = 1847.0
